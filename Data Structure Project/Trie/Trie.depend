@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1486844143 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
+	<iostream>
+	<cstdlib>
+	"BasicProperties.h"
+	"SearchAllWord.h"
+	"SpellingHelper.h"
+
+1486843494 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.h
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	<algorithm>
+
+1486841431 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.h
+	"BasicProperties.h"
+	<vector>
+	<fstream>
+
+1486812449 source:d:\programing\data-structure-project\data structure project\trie\main.cpp
+	<iostream>
+	<cstdlib>
+	"BasicProperties.h"
+	"SearchAllWord.h"
+
+1486809115 d:\programing\data-structure-project\data structure project\trie\basicproperties.h
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	<algorithm>
+
+1486812566 d:\programing\data-structure-project\data structure project\trie\searchallword.h
+	"BasicProperties.h"
+	<vector>
+	<fstream>
+
+1487005900 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\spellinghelper.h
+	"BasicProperties.h"
+	"SearchAllWord.h"
+
+1489162291 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\main.cpp
+	<iostream>
+	<cstdlib>
+	"BasicProperties.h"
+	"SearchAllWord.h"
+	"SpellingHelper.h"
+
+1489163575 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\basicproperties.h
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	<algorithm>
+	<ctime>
+
+1488651148 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\searchallword.h
+	"BasicProperties.h"
+	<vector>
+	<fstream>
+
+1488651147 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\spellinghelper.h
+	"BasicProperties.h"
+	"SearchAllWord.h"
+
