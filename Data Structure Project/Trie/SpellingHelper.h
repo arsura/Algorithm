@@ -9,7 +9,7 @@ void spellingHelper(TrieNode *node, vector<char> temp, char *key, int level, int
     if (!node) return;
 
     if (index == strlen(key)) {
-        allWordsHealper(node, temp, level);
+        allWordsHelper(node, temp, level);
     }
     else {
         for (int i = 0; i < ARRAY_SIZE; i++) {
@@ -33,12 +33,12 @@ void spelling(Trie *trie, char *key)
 
 
     cout << endl;
-    for (int i = 0; i < ARRAY_SIZE; i++) {
-        if (node->children[i] && key[keyIndex] == char(i)) {
-            temp.push_back(char(i));
-            spellingHelper(node->children[i], temp, key, 1, keyIndex + 1);
-        }
-    }
+//    for (int i = 0; i < ARRAY_SIZE; i++) {
+//        if (node->children[i] && key[keyIndex] == char(i)) {
+//            temp.push_back(char(i));
+//            spellingHelper(node->children[i], temp, key, 1, keyIndex + 1);
+//        }
+//    }
 }
 
 #endif // SPELLINGHELPER_H_INCLUDED

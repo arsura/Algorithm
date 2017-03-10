@@ -14,7 +14,7 @@ void setCountZero()
     Count = 0;
 }
 
-void allWordsHealper(TrieNode *node, vector<char> temp, int level)
+void allWordsHelper(TrieNode *node, vector<char> temp, int level)
 {
     if (!node) return;
 
@@ -44,7 +44,7 @@ void allWordsHealper(TrieNode *node, vector<char> temp, int level)
         for (int i = 0; i < ARRAY_SIZE; i++) {
             if (node->children[i]) {
                 temp.push_back(char(i));
-                allWordsHealper(node->children[i], temp, level + 1);
+                allWordsHelper(node->children[i], temp, level + 1);
                 for (int j = 0; j < ARRAY_SIZE; ++j) {
                     if (level == j) {
                         temp.erase(temp.begin() + j);
@@ -67,7 +67,7 @@ void allWords(Trie *trie)
     for (int i = 0; i < ARRAY_SIZE; i++) {
         if (node->children[i]) {
             temp.push_back(char(i));
-            allWordsHealper(node->children[i], temp, 1);
+            allWordsHelper(node->children[i], temp, 1);
         }
         temp.clear();
     }

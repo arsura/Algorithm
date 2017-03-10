@@ -153,7 +153,7 @@ void Destroyed(Trie *trie)
 {
     TrieNode *currentNode = trie->root;
 
-    clock_t start = clock();
+//    clock_t start = clock();
     for (int i = 0; i < ARRAY_SIZE; ++i) {
         if (currentNode->children[i]) {
             DestroyedHelper(currentNode->children[i]);
@@ -161,8 +161,8 @@ void Destroyed(Trie *trie)
             currentNode->children[i] = NULL;
         }
     }
-    double duration = (clock() - start) / (double) CLOCKS_PER_SEC;
-    cout << "           " << duration << " s" << endl;
+//    double duration = (clock() - start) / (double) CLOCKS_PER_SEC;
+//    cout << "           " << duration << " s" << endl;
 }
 
 
@@ -241,28 +241,23 @@ void Display(Trie *node, char *key)
 
 void readFile(Trie *trie)
 {
-    ifstream inFile("data6.txt", ios::in);
+    ifstream inFile("data3.txt", ios::in);
 
     if (!inFile) cerr << "file not found" << endl;
 
     char temp[1][100] = {""};
     int countWord = 0;
 
-    clock_t start = clock();
+//    clock_t start = clock();
 
     while(inFile >> temp[0]) {
-//        for (int i = 0; i < strlen(temp[0]); ++i) {
-//            if (temp[0][i] >= 65 && temp[0][i] <= 90) {
-//                temp[0][i] = temp[0][i] + 32;
-//            }
-//        }
         Insert(trie, temp[0]);
         ++countWord;
     }
     inFile.close();
 
-    double duration = (clock() - start) / (double) CLOCKS_PER_SEC;
-    cout << "           " << duration << " s" << endl;
+//    double duration = (clock() - start) / (double) CLOCKS_PER_SEC;
+//    cout << "           " << duration << " s" << endl;
 
 }
 

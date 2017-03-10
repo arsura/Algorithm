@@ -6,7 +6,7 @@
 	"SearchAllWord.h"
 	"SpellingHelper.h"
 
-1489163618 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.h
+1489165159 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.h
 	<iostream>
 	<string>
 	<cstdlib>
@@ -15,7 +15,7 @@
 	<algorithm>
 	<ctime>
 
-1488651148 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.h
+1489164904 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.h
 	"BasicProperties.h"
 	<vector>
 	<fstream>
@@ -39,7 +39,7 @@
 	<vector>
 	<fstream>
 
-1488651147 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\spellinghelper.h
+1489165159 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\spellinghelper.h
 	"BasicProperties.h"
 	"SearchAllWord.h"
 
