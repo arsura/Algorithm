@@ -39,6 +39,10 @@ void spelling(Trie *trie, char *key)
 //            spellingHelper(node->children[i], temp, key, 1, keyIndex + 1);
 //        }
 //    }
+
+    keyIndex = 
+    if (node->children[0])
+
 }
 
 #endif // SPELLINGHELPER_H_INCLUDED

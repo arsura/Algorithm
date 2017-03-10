@@ -31,14 +31,14 @@ void spelling(Trie *trie, char *key)
     vector<char> temp;
     setCountZero();
 
-
     cout << endl;
-//    for (int i = 0; i < ARRAY_SIZE; i++) {
-//        if (node->children[i] && key[keyIndex] == char(i)) {
-//            temp.push_back(char(i));
-//            spellingHelper(node->children[i], temp, key, 1, keyIndex + 1);
-//        }
-//    }
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        if (node->children[i] && key[keyIndex] == char(i)) {
+            temp.push_back(char(i));
+            spellingHelper(node->children[i], temp, key, 1, keyIndex + 1);
+        }
+    }
+
 }
 
 #endif // SPELLINGHELPER_H_INCLUDED
