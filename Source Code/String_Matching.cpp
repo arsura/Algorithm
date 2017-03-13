@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -27,11 +28,11 @@ bool stringMatching(string text, string pattern)
 int main()
 {
     cout << "are, naresuan university == (1)" << " : " << stringMatching("naresuan university", "are") << endl;
-    cout << "re, naresuan university == (1)" << " : " << stringMatching("naresuan university", "re") << endl;
-    cout << "n , naresuan university == (1)" << " : " << stringMatching("naresuan university", "n ") << endl;
-    cout << " u, naresuan university == (1)" << " : " << stringMatching("naresuan university", " u") << endl;
-    cout << "_a, naresuan university == (0)" << " : " << stringMatching("naresuan university", "_a") << endl;
-    cout << "tyy, naresuan university == (0)" << " : " << stringMatching("naresuan university", "tyy") << endl;
-    cout << "naa, naresuan university == (0)" << " : " << stringMatching("naresuan university", "naa") << endl;
-    cout << "is, naresuan university == (0)" << " : " << stringMatching("naresuan university", "naa") << endl;
+//    cout << "re, naresuan university == (1)" << " : " << stringMatching("naresuan university", "re") << endl;
+//    cout << "n , naresuan university == (1)" << " : " << stringMatching("naresuan university", "n ") << endl;
+//    cout << " u, naresuan university == (1)" << " : " << stringMatching("naresuan university", " u") << endl;
+//    cout << "_a, naresuan university == (0)" << " : " << stringMatching("naresuan university", "_a") << endl;
+//    cout << "tyy, naresuan university == (0)" << " : " << stringMatching("naresuan university", "tyy") << endl;
+//    cout << "naa, naresuan university == (0)" << " : " << stringMatching("naresuan university", "naa") << endl;
+//    cout << "is, naresuan university == (0)" << " : " << stringMatching("naresuan university", "naa") << endl;
 }
