@@ -27,7 +27,7 @@ bool stringMatching(string text, string pattern)
 
 int main()
 {
-    cout << "are, naresuan university == (1)" << " : " << stringMatching("naresuan university", "are") << endl;
+    cout << "er, she == (0)" << " : " << stringMatching("she", "er") << endl;
 //    cout << "re, naresuan university == (1)" << " : " << stringMatching("naresuan university", "re") << endl;
 //    cout << "n , naresuan university == (1)" << " : " << stringMatching("naresuan university", "n ") << endl;
 //    cout << " u, naresuan university == (1)" << " : " << stringMatching("naresuan university", " u") << endl;
