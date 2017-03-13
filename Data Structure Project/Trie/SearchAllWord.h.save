@@ -5,9 +5,8 @@
 #include <vector>
 #include <fstream>
 
-#define ARRAY_SIZE 256
-
 ofstream outFile("output.txt");
+vector<char> toStarSearch;
 
 int Count = 0;
 
@@ -16,7 +15,7 @@ void setCountZero()
     Count = 0;
 }
 
-void allWordsHealper(TrieNode *node, vector<char> temp, int level)
+void allWordsHelper(TrieNode *node, vector<char> temp, int level)
 {
     if (!node) return;
 
@@ -29,6 +28,7 @@ void allWordsHealper(TrieNode *node, vector<char> temp, int level)
         }
         cout << endl;
         outFile << endl;
+        toStarSearch.push_back(temp[Count]);
         temp.clear();
     }
 
@@ -45,9 +45,9 @@ void allWordsHealper(TrieNode *node, vector<char> temp, int level)
         }
         for (int i = 0; i < ARRAY_SIZE; i++) {
             if (node->children[i]) {
-                temp.push_back(char(i + 97));
-                allWordsHealper(node->children[i], temp, level + 1);
-                for (int j = 0; j < 26; ++j) {
+                temp.push_back(char(i));
+                allWordsHelper(node->children[i], temp, level + 1);
+                for (int j = 0; j < ARRAY_SIZE; ++j) {
                     if (level == j) {
                         temp.erase(temp.begin() + j);
                     }
@@ -66,10 +66,10 @@ void allWords(Trie *trie)
     Count = 0;
     vector<char> temp;
     TrieNode *node = trie->root;
-    for (int i = 0; i < 26; i++) {
+    for (int i = 0; i < ARRAY_SIZE; i++) {
         if (node->children[i]) {
-            temp.push_back(char(i + 97));
-            allWordsHealper(node->children[i], temp, 1);
+            temp.push_back(char(i));
+            allWordsHelper(node->children[i], temp, 1);
         }
         temp.clear();
     }

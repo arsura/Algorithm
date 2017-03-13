@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1489162291 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
+1489422347 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
 	<iostream>
 	<cstdlib>
 	"BasicProperties.h"
 	"SearchAllWord.h"
 	"SpellingHelper.h"
+	"StarWordSearch.h"
 
 1489165204 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.h
 	<iostream>
@@ -15,7 +16,7 @@
 	<algorithm>
 	<ctime>
 
-1489164904 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.h
+1489418998 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.h
 	"BasicProperties.h"
 	<vector>
 	<fstream>
@@ -67,4 +68,9 @@
 1488651147 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\spellinghelper.h
 	"BasicProperties.h"
 	"SearchAllWord.h"
+
+1489423284 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starwordsearch.h
+	"BasicProperties.h"
+	"SearchAllWord.h"
+	"SpellingHelper.h"
 
