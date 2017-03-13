@@ -1,13 +1,9 @@
 # depslib dependency file v1.0
-1489422347 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
+1489427646 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
 	<iostream>
 	<cstdlib>
-	"BasicProperties.h"
-	"SearchAllWord.h"
-	"SpellingHelper.h"
-	"StarWordSearch.h"
-
-1489165204 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.h
+	<vector>
+	<fstream>
 	<iostream>
 	<string>
 	<cstdlib>
@@ -15,11 +11,14 @@
 	<fstream>
 	<algorithm>
 	<ctime>
-
-1489418998 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.h
 	"BasicProperties.h"
-	<vector>
-	<fstream>
+	"SearchAllWord.h"
+	"SpellingHelper.h"
+	"StarWordSearch.h"
+
+1489426605 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.h
+
+1489426530 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.h
 
 1486812449 source:d:\programing\data-structure-project\data structure project\trie\main.cpp
 	<iostream>
@@ -40,9 +39,7 @@
 	<vector>
 	<fstream>
 
-1489165555 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\spellinghelper.h
-	"BasicProperties.h"
-	"SearchAllWord.h"
+1489426516 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\spellinghelper.h
 
 1489162291 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\main.cpp
 	<iostream>
@@ -69,8 +66,5 @@
 	"BasicProperties.h"
 	"SearchAllWord.h"
 
-1489423284 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starwordsearch.h
-	"BasicProperties.h"
-	"SearchAllWord.h"
-	"SpellingHelper.h"
+1489427448 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starwordsearch.h
 

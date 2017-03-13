@@ -6,7 +6,6 @@
 #include <fstream>
 
 ofstream outFile("output.txt");
-vector<char> toStarSearch;
 
 int Count = 0;
 
@@ -28,7 +27,6 @@ void allWordsHelper(TrieNode *node, vector<char> temp, int level)
         }
         cout << endl;
         outFile << endl;
-        toStarSearch.push_back(temp[Count]);
         temp.clear();
     }
 

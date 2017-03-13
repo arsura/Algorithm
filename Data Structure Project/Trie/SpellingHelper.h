@@ -1,9 +1,6 @@
 #ifndef SPELLINGHELPER_H_INCLUDED
 #define SPELLINGHELPER_H_INCLUDED
 
-#include "BasicProperties.h"
-#include "SearchAllWord.h"
-
 void spellingHelper(TrieNode *node, vector<char> temp, char *key, int level, int index)
 {
     if (!node) return;

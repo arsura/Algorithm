@@ -19,6 +19,7 @@ int main()
     char tempWord[1][100] = {""};
     char oldWord[1][100] = {""};
     char newWord[1][100] = {""};
+    string stringMatching;
 
     while (input != 10) {
         cout << "  ====================" << endl;
@@ -98,7 +99,10 @@ int main()
 
         else if (input == '9') {
             cout << endl;
-            StarWordSearch(Trie *trie, string pattern)
+            cout << "   *Word, please input word: ";
+            cin >> stringMatching;
+            StarWordSearch(trie, stringMatching);
+            cout <
         }
 
         else {

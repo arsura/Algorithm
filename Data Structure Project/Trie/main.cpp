@@ -1,5 +1,14 @@
 #include <iostream>
 #include <cstdlib>
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <cstring>
+#include <fstream>
+#include <algorithm>
+#include <ctime>
 
 #include "BasicProperties.h"
 #include "SearchAllWord.h"
@@ -34,7 +43,7 @@ int main()
         cout << "   6. All Words" << endl;
         cout << "   7. Read from file" << endl;
         cout << "   8. Spelling Helper" << endl;
-        cout << "   9. *Word" << endl;
+        cout << "   9. *Before Word" << endl;
         cout << "   10. Exit" << endl;
         cout << endl;
         cout << "   Choose: ";
@@ -91,17 +100,17 @@ int main()
             spelling(trie, tempWord[0]);
         }
 
+        else if (input == '9') {
+            cout << endl;
+            cout << "   *Before Word, please input word: ";
+            cin >> stringMatching;
+            StarWordSearch(trie, stringMatching);
+        }
+
         else if (input == '10') {
             cout << endl;
             input = 10;
             cout << "   Exit." << endl;
-        }
-
-        else if (input == '9') {
-            cout << endl;
-            cout << "   *Word, please input word: ";
-            cin >> stringMatching;
-            StarWordSearch(trie, stringMatching);
         }
 
         else {

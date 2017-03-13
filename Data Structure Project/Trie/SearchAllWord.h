@@ -1,10 +1,6 @@
 #ifndef SEARCHALLWORD_H_INCLUDED
 #define SEARCHALLWORD_H_INCLUDED
 
-#include "BasicProperties.h"
-#include <vector>
-#include <fstream>
-
 ofstream outFile("output.txt");
 
 int Count = 0;
@@ -61,7 +57,7 @@ void allWords(Trie *trie)
 {
     if (!trie) return;
 
-    Count = 0;
+    setCountZero();
     vector<char> temp;
     TrieNode *node = trie->root;
     for (int i = 0; i < ARRAY_SIZE; i++) {

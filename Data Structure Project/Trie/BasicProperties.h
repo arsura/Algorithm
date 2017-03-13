@@ -1,14 +1,6 @@
 #ifndef BASICPROPERTIES_H_INCLUDED
 #define BASICPROPERTIES_H_INCLUDED
 
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <algorithm>
-#include <ctime>
-
 #define ARRAY_SIZE 128
 
 using namespace std;
