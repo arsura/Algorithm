@@ -233,7 +233,7 @@ void Display(Trie *node, char *key)
 
 void readFile(Trie *trie)
 {
-    ifstream inFile("data3.txt", ios::in);
+    ifstream inFile("data.txt", ios::in);
 
     if (!inFile) cerr << "file not found" << endl;
 

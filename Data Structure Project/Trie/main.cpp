@@ -12,7 +12,7 @@
 
 #include "BasicProperties.h"
 #include "SearchAllWord.h"
-#include "SpellingHelper.h"
+#include "AutoComplete.h"
 #include "StarWordSearch.h"
 
 using namespace std;
@@ -42,7 +42,7 @@ int main()
         cout << "   5. Survey" << endl;
         cout << "   6. All Words" << endl;
         cout << "   7. Read from file" << endl;
-        cout << "   8. Spelling Helper" << endl;
+        cout << "   8. Auto Complete" << endl;
         cout << "   9. *Before Word" << endl;
         cout << "   10. Exit" << endl;
         cout << endl;
@@ -95,9 +95,9 @@ int main()
 
         else if (input == '8') {
             cout << endl;
-            cout << "   Spelling Helper, please input word: ";
+            cout << "   Auto Complete, please input word: ";
             cin >> tempWord[0];
-            spelling(trie, tempWord[0]);
+            autoComplete(trie, tempWord[0]);
         }
 
         else if (input == '9') {

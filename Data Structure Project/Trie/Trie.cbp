@@ -32,9 +32,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="AutoComplete.h" />
 		<Unit filename="BasicProperties.h" />
 		<Unit filename="SearchAllWord.h" />
-		<Unit filename="SpellingHelper.h" />
 		<Unit filename="StarWordSearch.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
