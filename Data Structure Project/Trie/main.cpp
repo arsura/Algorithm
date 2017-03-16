@@ -31,7 +31,7 @@ int main()
     char newWord[1][100] = {""};
     string stringMatching;
 
-    while (input != 11) {
+    while (input != 'B') {
         cout << "  ====================" << endl;
         cout << "   Trie (Prefix tree) " << endl;
         cout << "  ====================" << endl;
@@ -119,7 +119,7 @@ int main()
 
         else if (input == 'B') {
             cout << endl;
-            input = 11;
+            input = 'B';
             cout << "   Exit." << endl;
         }
 

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1489681792 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
+1489686051 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
 	<iostream>
 	<cstdlib>
 	<vector>
@@ -74,4 +74,6 @@
 1489680939 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\stringmatching.h
 
 1489683780 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starbeforeword.h
+
+1489685840 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\spellchecker.h
 
