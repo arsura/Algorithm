@@ -35,7 +35,8 @@
 		<Unit filename="AutoComplete.h" />
 		<Unit filename="BasicProperties.h" />
 		<Unit filename="SearchAllWord.h" />
-		<Unit filename="StarWordSearch.h" />
+		<Unit filename="StarBeforeWord.h" />
+		<Unit filename="StringMatching.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

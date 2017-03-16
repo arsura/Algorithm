@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1489515190 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
+1489681792 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
 	<iostream>
 	<cstdlib>
 	<vector>
@@ -14,7 +14,8 @@
 	"BasicProperties.h"
 	"SearchAllWord.h"
 	"AutoComplete.h"
-	"StarWordSearch.h"
+	"StringMatching.h"
+	"StarBeforeWord.h"
 
 1489515325 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.h
 
@@ -69,4 +70,8 @@
 1489427448 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starwordsearch.h
 
 1489515027 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\autocomplete.h
+
+1489680939 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\stringmatching.h
+
+1489683780 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starbeforeword.h
 

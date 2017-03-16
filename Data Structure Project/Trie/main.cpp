@@ -13,7 +13,8 @@
 #include "BasicProperties.h"
 #include "SearchAllWord.h"
 #include "AutoComplete.h"
-#include "StarWordSearch.h"
+#include "StringMatching.h"
+#include "StarBeforeWord.h"
 
 using namespace std;
 
@@ -30,21 +31,22 @@ int main()
     char newWord[1][100] = {""};
     string stringMatching;
 
-    while (input != 10) {
+    while (input != 11) {
         cout << "  ====================" << endl;
         cout << "   Trie (Prefix tree) " << endl;
         cout << "  ====================" << endl;
         cout << endl;
-        cout << "   1. Insert" << endl;
-        cout << "   2. Delete" << endl;
-        cout << "   3. Replace" << endl;
-        cout << "   4. Destroy" << endl;
-        cout << "   5. Survey" << endl;
-        cout << "   6. All Words" << endl;
-        cout << "   7. Read from file" << endl;
-        cout << "   8. Auto Complete" << endl;
-        cout << "   9. *Before Word" << endl;
-        cout << "   10. Exit" << endl;
+        cout << "   1.  Insert" << endl;
+        cout << "   2.  Delete" << endl;
+        cout << "   3.  Replace" << endl;
+        cout << "   4.  Destroy" << endl;
+        cout << "   5.  Survey" << endl;
+        cout << "   6.  All Words" << endl;
+        cout << "   7.  Read from file" << endl;
+        cout << "   8.  Auto Complete" << endl;
+        cout << "   9.  String Matching" << endl;
+        cout << "   A.  *Word" << endl;
+        cout << "   B.  Exit" << endl;
         cout << endl;
         cout << "   Choose: ";
         cin >> input;
@@ -102,14 +104,22 @@ int main()
 
         else if (input == '9') {
             cout << endl;
-            cout << "   *Before Word, please input word: ";
+            cout << "   String Matching, please input word: ";
             cin >> stringMatching;
-            StarWordSearch(trie, stringMatching);
+            StringMatching(trie, stringMatching);
+            stringMatching.clear();
+        }
+        else if (input == 'A') {
+            cout << endl;
+            cout << "   *Word, please input word: ";
+            cin >> stringMatching;
+            StarBeforeWord(trie, stringMatching);
+            stringMatching.clear();
         }
 
-        else if (input == '10') {
+        else if (input == 'B') {
             cout << endl;
-            input = 10;
+            input = 11;
             cout << "   Exit." << endl;
         }
 
