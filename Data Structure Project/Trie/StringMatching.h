@@ -31,15 +31,13 @@ void StringMatchingHelper(TrieNode *node, vector<char> temp, int level, string p
 
     if (LeafNode(node) && FreeNode(node)) {
         string str(temp.begin(), temp.end());
-        if (chckMatch(str, pattern)) {
+        if (chckMatch(str, pattern)) { // O(n + m)
             ++StringMatchingCount;
             cout << "   " << StringMatchingCount << ": ";
             for (int i = 0; i < temp.size(); ++i) {
                 cout << temp[i];
-                outFile << temp[i];
             }
             cout << endl;
-            outFile << endl;
         }
         temp.clear();
     }
@@ -52,10 +50,8 @@ void StringMatchingHelper(TrieNode *node, vector<char> temp, int level, string p
                 cout << "   " << StringMatchingCount << ": ";
                 for (int i = 0; i < temp.size(); ++i) {
                     cout << temp[i];
-                    outFile << temp[i];
                 }
                 cout << endl;
-                outFile << endl;
             }
         }
         for (int i = 0; i < ARRAY_SIZE; i++) {
@@ -81,7 +77,7 @@ void StringMatching(Trie *trie, string pattern)
     StringMatchingCount = 0;
     vector<char> temp;
     TrieNode *node = trie->root;
-    for (int i = 0; i < ARRAY_SIZE; i++) {
+    for (int i = 0; i < ARRAY_SIZE; i++) {  // 127 Times
         if (node->children[i]) {
             temp.push_back(char(i));
             StringMatchingHelper(node->children[i], temp, 1, pattern);

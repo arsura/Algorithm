@@ -40,7 +40,7 @@ int main()
         cout << "   2.  Delete" << endl;
         cout << "   3.  Replace" << endl;
         cout << "   4.  Destroy" << endl;
-        cout << "   5.  Survey" << endl;
+        cout << "   5.  Search" << endl;
         cout << "   6.  All Words" << endl;
         cout << "   7.  Read from file" << endl;
         cout << "   8.  Auto Complete" << endl;
@@ -80,7 +80,7 @@ int main()
 
         else if (input == '5') {
             cout << endl;
-            cout << "   Survey, please input word: ";
+            cout << "   Search, please input word: ";
             cin >> tempWord[0];
             Display(trie, tempWord[0]);
         }
