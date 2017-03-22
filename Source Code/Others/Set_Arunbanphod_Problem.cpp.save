@@ -57,7 +57,7 @@ int main()
     cout<<"-----------------------------------"<<endl;
 
     time = clock();
-    unsigned long long sum2 = sumOfDivied2(Array,0,Array.size()-1);
+    long int sum2 = sumOfDivied2(Array,0,Array.size()-1);
     time = clock() - time;
 
     cout<<"Sum 2 : "<<sum2<<endl;
