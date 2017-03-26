@@ -1,21 +1,14 @@
 #ifndef BASICPROPERTIES_H_INCLUDED
 #define BASICPROPERTIES_H_INCLUDED
 
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <algorithm>
-#include <ctime>
-
-#define ARRAY_SIZE 128
+#define ARRAY_SIZE 129
 
 using namespace std;
 
 struct TrieNode
 {
     TrieNode *children[ARRAY_SIZE];
+    TrieNode *parent[ARRAY_SIZE];
     int value;
 };
 
@@ -51,12 +44,14 @@ void Insert(Trie *trie, char *key)
     int index;
     int length = strlen(key);
     TrieNode *currentNode;
+    TrieNode *previousNode;
 
     trie->Count++;
     currentNode = trie->root;
 
     for (int i = 0; i < length; i++) {
         index = (int)key[i];
+
         if (currentNode->children[index]) {
             currentNode = currentNode->children[index];
         }
@@ -64,6 +59,7 @@ void Insert(Trie *trie, char *key)
             currentNode->children[index] = createNode();
             currentNode = currentNode->children[index];
         }
+
     }
     currentNode->value = trie->Count;
 }
@@ -120,7 +116,7 @@ void Delete(Trie *trie, char *key)
     }
 }
 
-// O(1) + O(length) x number_of_word
+// O(1) + O(length x number_of_word)
 bool DestroyedHelper(TrieNode *node)
 {
     if (node) {
@@ -152,8 +148,8 @@ bool DestroyedHelper(TrieNode *node)
 void Destroyed(Trie *trie)
 {
     TrieNode *currentNode = trie->root;
-    
-    clock_t start = clock();
+
+//    clock_t start = clock();
     for (int i = 0; i < ARRAY_SIZE; ++i) {
         if (currentNode->children[i]) {
             DestroyedHelper(currentNode->children[i]);
@@ -161,6 +157,8 @@ void Destroyed(Trie *trie)
             currentNode->children[i] = NULL;
         }
     }
+//    double duration = (clock() - start) / (double) CLOCKS_PER_SEC;
+//    cout << "           " << duration << " s" << endl;
 }
 
 
@@ -239,22 +237,23 @@ void Display(Trie *node, char *key)
 
 void readFile(Trie *trie)
 {
-    ifstream inFile("data6.txt", ios::in);
+    ifstream inFile("data.txt", ios::in);
 
     if (!inFile) cerr << "file not found" << endl;
 
     char temp[1][100] = {""};
     int countWord = 0;
+
+//    clock_t start = clock();
+
     while(inFile >> temp[0]) {
-//        for (int i = 0; i < strlen(temp[0]); ++i) {
-//            if (temp[0][i] >= 65 && temp[0][i] <= 90) {
-//                temp[0][i] = temp[0][i] + 32;
-//            }
-//        }
         Insert(trie, temp[0]);
         ++countWord;
     }
     inFile.close();
+
+//    double duration = (clock() - start) / (double) CLOCKS_PER_SEC;
+//    cout << "           " << duration << " s" << endl;
 
 }
 

@@ -1,7 +1,7 @@
 #ifndef BASICPROPERTIES_H_INCLUDED
 #define BASICPROPERTIES_H_INCLUDED
 
-#define ARRAY_SIZE 128
+#define ARRAY_SIZE 129
 
 using namespace std;
 
@@ -49,6 +49,7 @@ void Insert(Trie *trie, char *key)
 
     for (int i = 0; i < length; i++) {
         index = (int)key[i];
+
         if (currentNode->children[index]) {
             currentNode = currentNode->children[index];
         }
@@ -56,6 +57,7 @@ void Insert(Trie *trie, char *key)
             currentNode->children[index] = createNode();
             currentNode = currentNode->children[index];
         }
+
     }
     currentNode->value = trie->Count;
 }
