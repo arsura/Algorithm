@@ -1,22 +1,4 @@
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <algorithm>
-#include <ctime>
-
-#include "BasicProperties.h"
-#include "SearchAllWord.h"
-#include "AutoComplete.h"
-#include "StringMatching.h"
-#include "StarBeforeWord.h"
-
-using namespace std;
+#include "TrieHeader.h"
 
 int main()
 {
@@ -133,3 +115,4 @@ int main()
 
     return 0;
 }
+

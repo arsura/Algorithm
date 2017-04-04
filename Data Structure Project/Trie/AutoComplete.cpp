@@ -1,5 +1,4 @@
-#ifndef SPELLINGHELPER_H_INCLUDED
-#define SPELLINGHELPER_H_INCLUDED
+#include "TrieHeader.h"
 
 void autoCompleteHelper(TrieNode *node, vector<char> temp, char *key, int level, int index)
 {
@@ -37,5 +36,3 @@ void autoComplete(Trie *trie, char *key)
     }
 
 }
-
-#endif // SPELLINGHELPER_H_INCLUDED

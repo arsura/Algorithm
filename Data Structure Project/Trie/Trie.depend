@@ -1,5 +1,11 @@
 # depslib dependency file v1.0
-1489689627 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
+1491331975 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
+	"TrieHeader.h"
+
+1491331237 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.cpp
+	"TrieHeader.h"
+
+1491331783 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\trieheader.h
 	<iostream>
 	<cstdlib>
 	<vector>
@@ -11,69 +17,16 @@
 	<fstream>
 	<algorithm>
 	<ctime>
-	"BasicProperties.h"
-	"SearchAllWord.h"
-	"AutoComplete.h"
-	"StringMatching.h"
-	"StarBeforeWord.h"
 
-1490298330 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.h
+1491331426 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\autocomplete.cpp
+	"TrieHeader.h"
 
-1489426530 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.h
+1491331506 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.cpp
+	"TrieHeader.h"
 
-1486812449 source:d:\programing\data-structure-project\data structure project\trie\main.cpp
-	<iostream>
-	<cstdlib>
-	"BasicProperties.h"
-	"SearchAllWord.h"
+1491331625 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starbeforeword.cpp
+	"TrieHeader.h"
 
-1486809115 d:\programing\data-structure-project\data structure project\trie\basicproperties.h
-	<iostream>
-	<string>
-	<cstdlib>
-	<cstring>
-	<fstream>
-	<algorithm>
-
-1486812566 d:\programing\data-structure-project\data structure project\trie\searchallword.h
-	"BasicProperties.h"
-	<vector>
-	<fstream>
-
-1489426516 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\spellinghelper.h
-
-1489162291 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\main.cpp
-	<iostream>
-	<cstdlib>
-	"BasicProperties.h"
-	"SearchAllWord.h"
-	"SpellingHelper.h"
-
-1489163575 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\basicproperties.h
-	<iostream>
-	<string>
-	<cstdlib>
-	<cstring>
-	<fstream>
-	<algorithm>
-	<ctime>
-
-1488651148 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\searchallword.h
-	"BasicProperties.h"
-	<vector>
-	<fstream>
-
-1488651147 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie_v2\spellinghelper.h
-	"BasicProperties.h"
-	"SearchAllWord.h"
-
-1489427448 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starwordsearch.h
-
-1489831496 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\autocomplete.h
-
-1489827618 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\stringmatching.h
-
-1489683780 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starbeforeword.h
-
-1489685840 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\spellchecker.h
+1491331930 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\stringmatching.cpp
+	"TrieHeader.h"
 

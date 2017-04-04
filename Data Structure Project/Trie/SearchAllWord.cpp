@@ -1,5 +1,4 @@
-#ifndef SEARCHALLWORD_H_INCLUDED
-#define SEARCHALLWORD_H_INCLUDED
+#include "TrieHeader.h"
 
 ofstream outFile("output.txt");
 
@@ -72,6 +71,3 @@ void allWords(Trie *trie)
     temp.clear();
     outFile.close();
 }
-
-
-#endif // SEARCHALLWORD_H_INCLUDED

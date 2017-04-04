@@ -1,40 +1,43 @@
-#ifndef STARWORDSEARCH_H_INCLUDED
-#define STARWORDSEARCH_H_INCLUDED
+#include "TrieHeader.h"
 
-using namespace std;
+int StarBeforeWordCount = 0;
 
-int StringMatchingCount = 0;
-
-bool chckMatch(string text, string pattern)
+int chckMatchAndResize(string text, string pattern)
 {
     bool have = false;
+    int index = 0;
     for (int i = 0; i < text.length(); i++) {
         if (pattern[0] == text[i]) {
             have = true;
+            index = i + pattern.length();
             for (int j = 0; j < pattern.length(); j++) {
                 if (pattern[j] != text[i + j]) {
                     have = false;
                     j = pattern.length();
+                    index = 0;
                 }
                 if (j == pattern.length() - 1) {
-                    return true;
+                    have = true;
                 }
             }
         }
     }
-    return have;
+    if (have) return index;
+    else return 0;
 }
 
-void StringMatchingHelper(TrieNode *node, vector<char> temp, int level, string pattern)
+
+void StarBeforeWordHelper(TrieNode *node, vector<char> temp, int level, string pattern)
 {
     if (!node) return;
 
     if (LeafNode(node) && FreeNode(node)) {
         string str(temp.begin(), temp.end());
-        if (chckMatch(str, pattern)) { // O(n + m)
-            ++StringMatchingCount;
-            cout << "   " << StringMatchingCount << ": ";
-            for (int i = 0; i < temp.size(); ++i) {
+        int rsize = chckMatchAndResize(str, pattern);
+        if (rsize > 0) {
+            ++StarBeforeWordCount;
+            cout << "   " << StarBeforeWordCount << ": ";
+            for (int i = 0; i < rsize; ++i) {
                 cout << temp[i];
             }
             cout << endl;
@@ -45,10 +48,11 @@ void StringMatchingHelper(TrieNode *node, vector<char> temp, int level, string p
     else {
         if (LeafNode(node) && !FreeNode(node)) {
             string str(temp.begin(), temp.end());
-            if (chckMatch(str, pattern)) {
-                ++StringMatchingCount;
-                cout << "   " << StringMatchingCount << ": ";
-                for (int i = 0; i < temp.size(); ++i) {
+            int rsize = chckMatchAndResize(str, pattern);
+            if (rsize > 0) {
+                ++StarBeforeWordCount;
+                cout << "   " << StarBeforeWordCount << ": ";
+                for (int i = 0; i < rsize; ++i) {
                     cout << temp[i];
                 }
                 cout << endl;
@@ -57,7 +61,7 @@ void StringMatchingHelper(TrieNode *node, vector<char> temp, int level, string p
         for (int i = 0; i < ARRAY_SIZE; i++) {
             if (node->children[i]) {
                 temp.push_back(char(i));
-                StringMatchingHelper(node->children[i], temp, level + 1, pattern); /
+                StarBeforeWordHelper(node->children[i], temp, level + 1, pattern);
                 for (int j = 0; j < ARRAY_SIZE; ++j) {
                     if (level == j) {
                         temp.erase(temp.begin() + j);
@@ -70,25 +74,21 @@ void StringMatchingHelper(TrieNode *node, vector<char> temp, int level, string p
 }
 
 
-void StringMatching(Trie *trie, string pattern)
+void StarBeforeWord(Trie *trie, string pattern)
 {
     if (!trie) return;
     cout << endl;
-    StringMatchingCount = 0;
+    StarBeforeWordCount = 0;
     vector<char> temp;
     TrieNode *node = trie->root;
-    for (int i = 0; i < ARRAY_SIZE; i++) {  // 127 Times
+    for (int i = 0; i < ARRAY_SIZE; i++) {
         if (node->children[i]) {
             temp.push_back(char(i));
-            StringMatchingHelper(node->children[i], temp, 1, pattern);
+            StarBeforeWordHelper(node->children[i], temp, 1, pattern);
         }
         temp.clear();
     }
 
     cout << endl;
     temp.clear();
-    outFile.close();
 }
-
-
-#endif // STARWORDSEARCH_H_INCLUDED

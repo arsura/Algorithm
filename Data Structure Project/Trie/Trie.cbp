@@ -32,16 +32,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="AutoComplete.h" />
-		<Unit filename="BasicProperties.h" />
-		<Unit filename="SearchAllWord.h" />
-		<Unit filename="StarBeforeWord.h" />
-		<Unit filename="StringMatching.h" />
+		<Unit filename="AutoComplete.cpp" />
+		<Unit filename="BasicProperties.cpp" />
+		<Unit filename="SearchAllWord.cpp" />
+		<Unit filename="StarBeforeWord.cpp" />
+		<Unit filename="StringMatching.cpp" />
+		<Unit filename="TrieHeader.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
+			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

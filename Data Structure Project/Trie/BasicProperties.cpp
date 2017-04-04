@@ -1,21 +1,4 @@
-#ifndef BASICPROPERTIES_H_INCLUDED
-#define BASICPROPERTIES_H_INCLUDED
-
-#define ARRAY_SIZE 129
-
-using namespace std;
-
-struct TrieNode
-{
-    TrieNode *children[ARRAY_SIZE];
-    int value;
-};
-
-struct Trie
-{
-    TrieNode *root;
-    int Count;
-};
+#include "TrieHeader.h"
 
 // O(1)
 TrieNode *createNode()
@@ -237,7 +220,7 @@ void readFile(Trie *trie)
 {
     ifstream inFile("data.txt", ios::in);
 
-    if (!inFile) cerr << "file not found" << endl;
+    if (!inFile) cerr << "     file not found" << endl;
 
     char temp[1][100] = {""};
     int countWord = 0;
@@ -254,5 +237,3 @@ void readFile(Trie *trie)
 //    cout << "           " << duration << " s" << endl;
 
 }
-
-#endif // BASICPROPERTIES_H_INCLUDED
