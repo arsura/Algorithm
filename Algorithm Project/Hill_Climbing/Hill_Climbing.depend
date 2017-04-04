@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1491302779 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\hill_climbing\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	"Eight_Puzzle.h"
+
+1491302863 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\hill_climbing\eight_puzzle.h
+	<iostream>
+	<vector>
+	<fstream>
+	<algorithm>
+
+1491302758 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\hill_climbing\eight_puzzle.cpp
+	"Eight_Puzzle.h"
+
