@@ -2,19 +2,16 @@
 
 int main()
 {
+    srand(time(NULL));
     Node *state = new Node;
     vector<int> begin_state, goal_state;
-    begin_state = ReadFile("begin_state.txt");
-    goal_state = ReadFile("goal_state.txt");
+    ReadFile(begin_state, goal_state);
 
     vectorDisplay(begin_state);
     vectorDisplay(goal_state);
 
-    cout << "======================================================" << endl;
-
     createRoot(state, begin_state, goal_state);
-
-    hillClimbing(state, goal_state, success);
+    hillClimbing(state, goal_state);
 
     return 0;
 }

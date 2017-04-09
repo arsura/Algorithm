@@ -10,16 +10,18 @@ void vectorDisplay(vector<int> state)
     cout << endl << endl;
 }
 
-vector<int> ReadFile(string choice)
+void ReadFile(vector<int> &begin_state, vector<int> &goal_state)
 {
-    vector<int> state;
-    ifstream inFile(choice);
+    ifstream inFile("input.txt");
+    if (!inFile) cerr << "file not found" << endl;
     int item;
+    int Count = 0;
     while (inFile >> item) {
-        state.push_back(item);
+        ++Count;
+        if (Count <= 9) begin_state.push_back(item);
+        else goal_state.push_back(item);
     }
     inFile.close();
-    return state;
 }
 
 int manhattanHeuristic(Node *node, vector<int> goal_state)
@@ -89,14 +91,16 @@ int misplacedHeuristic(Node *node, vector<int> goal_state)
 	return misplacedHeuristic;
 }
 
+int Heuristic(Node *node, vector<int> goal_state)
+{
+    int Rand = rand() % 2;
+    return (Rand == 1) ? misplacedHeuristic(node, goal_state) : manhattanHeuristic(node, goal_state);
+}
+
 
 bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
 {
-
-    int vector_size = parent->state_table.size();
-    for (int i = 0; i < vector_size; ++i) {
-        child->state_table.push_back(parent->state_table[i]);
-    }
+    child->state_table = parent->state_table;
     findIndex(child);
 
     bool worstMove = false;
@@ -104,7 +108,7 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
         worstMove = true;
     }
 
-    switch (moving) { // create condition don't move position to parent empty index
+    switch (moving) {
         case 'u':
             if (child->empty_index > 2 && !worstMove) {
                 swap(child->state_table[child->empty_index], child->state_table[child->empty_index - 3]);
@@ -146,9 +150,7 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
 
 Node *createChild(Node *parent, vector<int> goal_state)
 {
-    cout << "------" << endl;
     vectorDisplay(parent->state_table);
-    cout << "------" << endl;
 
     Node *currentNode;
     Node *children[4];
@@ -157,11 +159,11 @@ Node *createChild(Node *parent, vector<int> goal_state)
 
     for (int i = 0; i < 4; ++i) {
         children[i] = new Node;
-        if (Move(parent, children[i], moving[i], goal_state) == true) {
+        if (Move(parent, children[i], moving[i], goal_state)) {
             children[i]->distance = parent->distance + 1;
-            children[i]->heuristic = manhattanHeuristic(children[i], goal_state);
-            cout << "Heuristic: " << children[i]->heuristic << endl;
+            children[i]->heuristic = Heuristic(children[i], goal_state);
             children[i]->parent = parent;
+            cout << "Heuristic: " << children[i]->heuristic << endl;
             for (int j = 0; j < 4; ++j) {
                 children[i]->children[j] = NULL;
             }
@@ -170,6 +172,7 @@ Node *createChild(Node *parent, vector<int> goal_state)
             children[i]->heuristic = 99;
             cout << "Heuristic: " << children[i]->heuristic << endl;
         }
+        parent->children[i] = children[i];
         vectorDisplay(children[i]->state_table);
     }
 
@@ -182,9 +185,34 @@ Node *createChild(Node *parent, vector<int> goal_state)
         }
     }
 
-    cout << "======================================================" << endl;
+    int duplicate = 0;
+    for (int i = 0; i < 4; i++) {
+        if (children[i]->heuristic == minHeuristic) {
+            ++duplicate;
+        }
+    }
+
+    if (duplicate > 1) {
+        currentNode = children[ifDuplicateHueristic(children, minHeuristic)];
+    }
+
+
+    cout << "=====================================" << endl;
 
     return currentNode;
+}
+
+int ifDuplicateHueristic(Node **node, int minHeuristic)
+{
+    int Rand = rand() % 4;
+    while (1) {
+        if (node[Rand]->heuristic == minHeuristic) {
+            return Rand;
+        }
+        else {
+            Rand = rand() % 4;
+        }
+    }
 }
 
 void findIndex(Node *node)
