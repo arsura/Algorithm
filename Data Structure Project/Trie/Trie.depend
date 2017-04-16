@@ -30,3 +30,59 @@
 1491331930 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\stringmatching.cpp
 	"TrieHeader.h"
 
+1491983899 source:c:\users\arsura\downloads\trie\trie\autocomplete.cpp
+	"TrieHeader.h"
+
+1491989260 c:\users\arsura\downloads\trie\trie\trieheader.h
+	<iostream>
+	<cstdlib>
+	<vector>
+	<fstream>
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	<algorithm>
+	<ctime>
+
+1491989230 source:c:\users\arsura\downloads\trie\trie\basicproperties.cpp
+	"TrieHeader.h"
+
+1491990250 source:c:\users\arsura\downloads\trie\trie\main.cpp
+	"TrieHeader.h"
+
+1491983899 source:c:\users\arsura\downloads\trie\trie\searchallword.cpp
+	"TrieHeader.h"
+
+1491983899 source:c:\users\arsura\downloads\trie\trie\stringmatching.cpp
+	"TrieHeader.h"
+
+1492011907 source:d:\programing\trie\autocomplete.cpp
+	"TrieHeader.h"
+
+1492009917 d:\programing\trie\trieheader.h
+	<iostream>
+	<cstdlib>
+	<vector>
+	<fstream>
+	<iostream>
+	<string>
+	<cstdlib>
+	<cstring>
+	<fstream>
+	<algorithm>
+	<ctime>
+
+1492012269 source:d:\programing\trie\basicproperties.cpp
+	"TrieHeader.h"
+
+1492012019 source:d:\programing\trie\main.cpp
+	"TrieHeader.h"
+
+1492010155 source:d:\programing\trie\searchallword.cpp
+	"TrieHeader.h"
+
+1492012140 source:d:\programing\trie\stringmatching.cpp
+	"TrieHeader.h"
+

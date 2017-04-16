@@ -2,7 +2,61 @@
 
 int StringMatchingCount = 0;
 
-bool chckMatch(string text, string pattern)
+void StringMatching(Trie *trie, string pattern)
+{
+    StringMatchingCount = 0;
+    vector<char> stack_word;
+    TrieNode *node = trie->root;
+    for (int i = 0; i < SIZE; i++) {
+        if (node->children[i]) {
+            stack_word.push_back(char(i));
+            StringMatchingHelper(node->children[i], stack_word, 1, pattern);
+        }
+        stack_word.clear();
+    }
+    stack_word.clear();
+}
+
+void StringMatchingHelper(TrieNode *node, vector<char> stack_word, int level, string pattern)
+{
+    if (LeafNode(node) && FreeNode(node)) {
+        string str(stack_word.begin(), stack_word.end());
+        if (checkMatch(str, pattern)) { // O(n + m)
+            ++StringMatchingCount;
+            cout << "   " << StringMatchingCount << ": ";
+            vectorPrint(stack_word);
+        }
+        stack_word.clear();
+    }
+
+    else {
+        if (LeafNode(node) && !FreeNode(node)) {
+            string str(stack_word.begin(), stack_word.end());
+            if (checkMatch(str, pattern)) {
+                ++StringMatchingCount;
+                cout << "   " << StringMatchingCount << ": ";
+                for (int i = 0; i < stack_word.size(); ++i) {
+                    cout << stack_word[i];
+                }
+                cout << endl;
+            }
+        }
+        for (int i = 0; i < SIZE; i++) {
+            if (node->children[i]) {
+                stack_word.push_back(char(i));
+                StringMatchingHelper(node->children[i], stack_word, level + 1, pattern);
+                for (int j = 0; j < SIZE; ++j) {
+                    if (level == j) {
+                        stack_word.erase(stack_word.begin() + j);
+                    }
+                }
+            }
+        }
+    }
+    stack_word.clear();
+}
+
+bool checkMatch(string text, string pattern)
 {
     bool have = false;
     for (int i = 0; i < text.length(); i++) {
@@ -20,68 +74,4 @@ bool chckMatch(string text, string pattern)
         }
     }
     return have;
-}
-
-void StringMatchingHelper(TrieNode *node, vector<char> temp, int level, string pattern)
-{
-    if (!node) return;
-
-    if (LeafNode(node) && FreeNode(node)) {
-        string str(temp.begin(), temp.end());
-        if (chckMatch(str, pattern)) { // O(n + m)
-            ++StringMatchingCount;
-            cout << "   " << StringMatchingCount << ": ";
-            for (int i = 0; i < temp.size(); ++i) {
-                cout << temp[i];
-            }
-            cout << endl;
-        }
-        temp.clear();
-    }
-
-    else {
-        if (LeafNode(node) && !FreeNode(node)) {
-            string str(temp.begin(), temp.end());
-            if (chckMatch(str, pattern)) {
-                ++StringMatchingCount;
-                cout << "   " << StringMatchingCount << ": ";
-                for (int i = 0; i < temp.size(); ++i) {
-                    cout << temp[i];
-                }
-                cout << endl;
-            }
-        }
-        for (int i = 0; i < ARRAY_SIZE; i++) {
-            if (node->children[i]) {
-                temp.push_back(char(i));
-                StringMatchingHelper(node->children[i], temp, level + 1, pattern);
-                for (int j = 0; j < ARRAY_SIZE; ++j) {
-                    if (level == j) {
-                        temp.erase(temp.begin() + j);
-                    }
-                }
-            }
-        }
-    }
-    temp.clear();
-}
-
-
-void StringMatching(Trie *trie, string pattern)
-{
-    if (!trie) return;
-    cout << endl;
-    StringMatchingCount = 0;
-    vector<char> temp;
-    TrieNode *node = trie->root;
-    for (int i = 0; i < ARRAY_SIZE; i++) {  // 127 Times
-        if (node->children[i]) {
-            temp.push_back(char(i));
-            StringMatchingHelper(node->children[i], temp, 1, pattern);
-        }
-        temp.clear();
-    }
-
-    cout << endl;
-    temp.clear();
 }

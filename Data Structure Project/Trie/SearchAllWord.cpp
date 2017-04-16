@@ -1,7 +1,5 @@
 #include "TrieHeader.h"
 
-ofstream outFile("output.txt");
-
 int Count = 0;
 
 void setCountZero()
@@ -9,65 +7,51 @@ void setCountZero()
     Count = 0;
 }
 
-void allWordsHelper(TrieNode *node, vector<char> temp, int level)
+void allWords(Trie *trie)
 {
-    if (!node) return;
+    vector<char> stack_word;
+    TrieNode *node = trie->root;
+    setCountZero();
 
+    for (int i = 0; i < SIZE; i++) {
+        if (node->children[i]) {
+            stack_word.push_back(char(i));
+            allWordsHelper(node->children[i], stack_word, 1);
+        }
+        stack_word.clear();
+    }
+
+    cout << endl;
+    stack_word.clear();
+}
+
+void allWordsHelper(TrieNode *node, vector<char> stack_word, int level)
+{
     if (LeafNode(node) && FreeNode(node)) {
         ++Count;
         cout << "   " << Count << ": ";
-        for (int j = 0; j < temp.size(); j++) {
-            cout << temp[j];
-            outFile << temp[j];
-        }
-        cout << endl;
-        outFile << endl;
-        temp.clear();
+        vectorPrint(stack_word);
+        stack_word.clear();
     }
 
     else {
         if (LeafNode(node) && !FreeNode(node)) {
             ++Count;
             cout << "   " << Count << ": ";
-            for (int j = 0; j < temp.size(); j++) {
-                cout << temp[j];
-                outFile << temp[j];
-            }
-            cout << endl;
-            outFile << endl;
+            vectorPrint(stack_word);
+
         }
-        for (int i = 0; i < ARRAY_SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             if (node->children[i]) {
-                temp.push_back(char(i));
-                allWordsHelper(node->children[i], temp, level + 1);
-                for (int j = 0; j < ARRAY_SIZE; ++j) {
+                stack_word.push_back(char(i));
+                allWordsHelper(node->children[i], stack_word, level + 1);
+                for (int j = 0; j < SIZE; ++j) {
                     if (level == j) {
-                        temp.erase(temp.begin() + j);
+                        stack_word.erase(stack_word.begin() + j);
                     }
                 }
             }
         }
     }
-    temp.clear();
-}
-
-
-void allWords(Trie *trie)
-{
-    if (!trie) return;
-
-    setCountZero();
-    vector<char> temp;
-    TrieNode *node = trie->root;
-    for (int i = 0; i < ARRAY_SIZE; i++) {
-        if (node->children[i]) {
-            temp.push_back(char(i));
-            allWordsHelper(node->children[i], temp, 1);
-        }
-        temp.clear();
-    }
-
-    cout << endl;
-    temp.clear();
-    outFile.close();
+    stack_word.clear();
 }

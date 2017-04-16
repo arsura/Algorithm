@@ -7,12 +7,12 @@ int main()
     Initialize(trie);
     Initialize(reverse_trie);
 
-    char keyboard_temp;
     char input;
+    char keyboard_temp;
 
-    char inputWord[255];
-    char oldWord[255];
-    char newWord[255];
+    char inputWord[1][100] = {""};
+    char oldWord[1][100] = {""};
+    char newWord[1][100] = {""};
     string stringMatching;
 
     while (input != 'B') {
@@ -37,44 +37,39 @@ int main()
         if (input == '1') {
             cout << endl;
             cout << "   Insert, please input word: ";
-            cin >> inputWord;
-            Insert(trie, inputWord);
-            reverseWord(inputWord);
-            Insert(reverse_trie, inputWord);
+            cin >> inputWord[0];
+            Insert(trie, inputWord[0]);
+            reverseWord(inputWord[0]);
+            Insert(reverse_trie, inputWord[0]);
         }
 
         else if (input == '2') {
             cout << endl;
             cout << "   Delete, please input word: ";
-            cin >> inputWord;
-            Delete(trie, inputWord);
-            reverseWord(inputWord);
-            Delete(reverse_trie, inputWord);
+            cin >> inputWord[0];
+            Delete(trie, inputWord[0]);
+            reverseWord(inputWord[0]);
+            Delete(reverse_trie, inputWord[0]);
         }
 
         else if (input == '3') {
             cout << endl;
             cout << "   Replace, please input old word: ";
-            cin >> oldWord;
+            cin >> oldWord[0];
             cout << "            please input new word: ";
-            cin >> newWord;
-            ReplaceWord(oldWord, newWord, trie);
-            reverseWord(oldWord);
-            reverseWord(newWord);
-            ReplaceWord(oldWord, newWord, reverse_trie);
+            cin >> newWord[0];
+            ReplaceWord(oldWord[0], newWord[0], trie);
         }
 
         else if (input == '4') {
             Destroyed(trie);
-            Destroyed(reverse_trie);
         }
 
         else if (input == '5') {
             cout << endl;
             cout << "   Search, please input word: ";
-            cin >> inputWord;
-            cout << endl;
-            Display(trie, inputWord);
+            cin >> inputWord[0];
+            Display(trie, inputWord[0]);
         }
 
         else if (input == '6') {
@@ -82,56 +77,39 @@ int main()
             cout << "       1. Trie" << endl;
             cout << "       2. Reverse Trie" << endl;
             cout << "       3. All" << endl;
-            cout << "       Choose: ";
+            cout << "           Choose: ";
             cin >> input;
-            cout << endl;
+            แน
             if (input == '1') allWords(trie);
             if (input == '2') allWords(reverse_trie);
             if (input == '3') {
                 allWords(trie);
                 allWords(reverse_trie);
             }
+
         }
 
         else if (input == '7') {
             cout << endl;
-            readFile(trie, reverse_trie);
+            readFile(trie);
         }
 
         else if (input == '8') {
             cout << endl;
-            cout << "       1. Trie" << endl;
-            cout << "       2. Reverse Trie" << endl;
-            cout << "       3. All" << endl;
-            cout << "       Choose: ";
-            cin >> input;
-            cout << endl;
             cout << "   Auto Complete, please input word: ";
-            cin >> inputWord;
-            cout << endl;
-            if (input == '1') {
-                autoComplete(trie, inputWord);
-            }
-            if (input == '2') {
-                reverseWord(inputWord);
-                autoComplete(reverse_trie, inputWord);
-            }
-            if (input == '3') {
-                autoComplete(trie, inputWord);
-                reverseWord(inputWord);
-                autoComplete(reverse_trie, inputWord);
-            }
+            cin >> inputWord[0];
+            autoComplete(trie, inputWord[0]);
         }
 
         else if (input == '9') {
             cout << endl;
             cout << "   String Matching, please input word: ";
             cin >> stringMatching;
-            cout << endl;
             StringMatching(trie, stringMatching);
+            stringMatching.clear();
         }
 
-        else if (input == 'B' || input == 'b') {
+        else if (input == 'B') {
             cout << endl;
             input = 'B';
             cout << "   Exit." << endl;
@@ -141,8 +119,10 @@ int main()
             cout << endl;
             cout << "   Please choose again!." << endl;
         }
+
         cout << endl;
     }
+
     return 0;
 }
 

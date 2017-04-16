@@ -35,7 +35,6 @@
 		<Unit filename="AutoComplete.cpp" />
 		<Unit filename="BasicProperties.cpp" />
 		<Unit filename="SearchAllWord.cpp" />
-		<Unit filename="StarBeforeWord.cpp" />
 		<Unit filename="StringMatching.cpp" />
 		<Unit filename="TrieHeader.h" />
 		<Unit filename="main.cpp" />

@@ -5,11 +5,12 @@ TrieNode *createNode()
 {
     TrieNode *node = new TrieNode();
 
-    node->value = 0;
-    for (int i = 0; i < SIZE; i++) {
-        node->children[i] = NULL;
+    if (node) {
+        node->value = 0;
+        for (int i = 0; i < ARRAY_SIZE; i++) {
+            node->children[i] = NULL;
+        }
     }
-
     return node;
 }
 
@@ -47,7 +48,7 @@ void Insert(Trie *trie, char *key)
 // O(1)
 int FreeNode(TrieNode *node)
 {
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 0; i < ARRAY_SIZE; i++) {
         if (node->children[i]) {
             return 0;
         }
@@ -59,13 +60,6 @@ int FreeNode(TrieNode *node)
 int LeafNode(TrieNode *node)
 {
     return (node->value != 0);
-}
-
-void Delete(Trie *trie, char *key)
-{
-    if (strlen(key) > 0) {
-        DeleteHelper(trie->root, key, 0, strlen(key));
-    }
 }
 
 // O(length)
@@ -96,21 +90,11 @@ bool DeleteHelper(TrieNode *node, char *key, int level, int length)
     return false;
 }
 
-// O(1)
-void Destroyed(Trie *trie)
+void Delete(Trie *trie, char *key)
 {
-    TrieNode *currentNode = trie->root;
-
-//    clock_t start = clock();
-    for (int i = 0; i < SIZE; ++i) {
-        if (currentNode->children[i]) {
-            DestroyedHelper(currentNode->children[i]);
-            free(currentNode->children[i]);
-            currentNode->children[i] = NULL;
-        }
+    if (strlen(key) > 0) {
+        DeleteHelper(trie->root, key, 0, strlen(key));
     }
-//    double duration = (clock() - start) / (double) CLOCKS_PER_SEC;
-//    cout << "           " << duration << " s" << endl;
 }
 
 // O(1) + O(length x number_of_word)
@@ -122,7 +106,7 @@ bool DestroyedHelper(TrieNode *node)
         }
 
         else {
-            for (int i = 0; i < SIZE; ++i) {
+            for (int i = 0; i < ARRAY_SIZE; ++i) {
                 if (DestroyedHelper(node->children[i])) {
                     free(node->children[i]);
                     node->children[i] = NULL;
@@ -140,6 +124,24 @@ bool DestroyedHelper(TrieNode *node)
     return false;
 
 }
+
+// O(1)
+void Destroyed(Trie *trie)
+{
+    TrieNode *currentNode = trie->root;
+
+//    clock_t start = clock();
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        if (currentNode->children[i]) {
+            DestroyedHelper(currentNode->children[i]);
+            free(currentNode->children[i]);
+            currentNode->children[i] = NULL;
+        }
+    }
+//    double duration = (clock() - start) / (double) CLOCKS_PER_SEC;
+//    cout << "           " << duration << " s" << endl;
+}
+
 
 bool haveWord(Trie *node, char *key)
 {
@@ -168,6 +170,7 @@ bool haveWord(Trie *node, char *key)
 
 void ReplaceWord(char *oldWord, char *newWord, Trie *node)
 {
+    if (!node) return;
     if (haveWord(node, oldWord)) {
         Delete(node, oldWord);
         Insert(node, newWord);
@@ -181,10 +184,13 @@ void ReplaceWord(char *oldWord, char *newWord, Trie *node)
 
 void Display(Trie *node, char *key)
 {
+    if (!node) return;
+
     int index;
     int length = strlen(key);
     TrieNode *currentNode;
 
+    cout << endl;
     if (haveWord(node, key)) {
         cout << "   word has found :)" << endl;
         currentNode = node->root;
@@ -194,7 +200,7 @@ void Display(Trie *node, char *key)
 
             cout << endl;
             cout << "   ";
-            for (int j = 0; j < SIZE; j++) cout << currentNode->children[j] << " ";
+            for (int j = 0; j < ARRAY_SIZE; j++) cout << currentNode->children[j] << " ";
             cout << endl;
 
             if (currentNode->children[index])
@@ -210,20 +216,19 @@ void Display(Trie *node, char *key)
     }
 }
 
-void readFile(Trie *trie, Trie *reverse_trie)
+void readFile(Trie *trie)
 {
     ifstream inFile("data.txt", ios::in);
 
     if (!inFile) cerr << "     file not found" << endl;
 
-    char item[255];
+    char temp[1][100] = {""};
     int countWord = 0;
 
 //    clock_t start = clock();
-    while(inFile.getline(item, 255)) {
-        Insert(trie, item);
-        reverseWord(item);
-        Insert(reverse_trie, item);
+
+    while(inFile >> temp[0]) {
+        Insert(trie, temp[0]);
         ++countWord;
     }
     inFile.close();
@@ -241,16 +246,10 @@ void reverseWord(char *key)
     for (int i = length - 1, j = 0; i >= 0; --i, ++j) {
         reverse_word[j] = key[i];
     }
-    reverse_word[length] = '\0';
+    reverse_word[length] = NULL;
 
-    for (int i = 0; i < length; ++i) {
-        *(key + i) = *(reverse_word + i);
+    for (int i = 0; i < length + 1; ++i) {
+        cout << reverse_word[i];
     }
-}
-
-void vectorPrint(vector<char> &word)
-{
-    for (auto& i: word)
-        cout << i;
     cout << endl;
 }
