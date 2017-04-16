@@ -1,12 +1,19 @@
 #include "Eight_Puzzle.h"
 
+ofstream outFile("display.txt");
+
 void vectorDisplay(vector<int> state)
 {
     int vector_size = state.size();
     for (int i = 0; i < vector_size; ++i) {
-        if (i % 3 == 0 && i != 0) cout << endl;
+        if (i % 3 == 0 && i != 0) {
+            cout << endl;
+            outFile << endl;
+        }
         cout << state[i] << " ";
+        outFile << state[i] << " ";
     }
+    outFile << endl << endl;
     cout << endl << endl;
 }
 
@@ -93,24 +100,19 @@ int misplacedHeuristic(Node *node, vector<int> goal_state)
 
 int Heuristic(Node *node, vector<int> goal_state)
 {
-    int Rand = rand() % 2;
-    return (Rand == 1) ? misplacedHeuristic(node, goal_state) : manhattanHeuristic(node, goal_state);
+//    return misplacedHeuristic(node, goal_state);
+    return manhattanHeuristic(node, goal_state);
 }
 
 
 bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
 {
     child->state_table = parent->state_table;
-    findIndex(child);
-
-    bool worstMove = false;
-    if (parent->distance > 2 && (child->empty_index == parent->empty_index)) {
-        worstMove = true;
-    }
+    child->empty_index = parent->empty_index;
 
     switch (moving) {
         case 'u':
-            if (child->empty_index > 2 && !worstMove) {
+            if (child->empty_index > 2) {
                 swap(child->state_table[child->empty_index], child->state_table[child->empty_index - 3]);
             }
             else {
@@ -119,7 +121,7 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
             break;
 
         case 'r':
-            if (child->empty_index % 3 != 2 && !worstMove) {
+            if (child->empty_index % 3 != 2) {
                 swap(child->state_table[child->empty_index], child->state_table[child->empty_index + 1]);
             }
             else {
@@ -128,7 +130,7 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
             break;
 
         case 'l':
-            if (child->empty_index % 3 != 0 && !worstMove) {
+            if (child->empty_index % 3 != 0) {
                 swap(child->state_table[child->empty_index], child->state_table[child->empty_index - 1]);
             }
             else {
@@ -137,7 +139,7 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
             break;
 
         case 'd':
-            if (child->empty_index < 6 && !worstMove) {
+            if (child->empty_index < 6) {
                 swap(child->state_table[child->empty_index], child->state_table[child->empty_index + 3]);
             }
             else {
@@ -145,6 +147,11 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
             }
             break;
     }
+
+    findIndex(child);
+    if (parent->distance > 1 && child->empty_index == parent->parent->empty_index)
+        return false;
+
     return true;
 }
 
@@ -159,21 +166,24 @@ Node *createChild(Node *parent, vector<int> goal_state)
 
     for (int i = 0; i < 4; ++i) {
         children[i] = new Node;
+        findIndex(parent);
         if (Move(parent, children[i], moving[i], goal_state)) {
             children[i]->distance = parent->distance + 1;
             children[i]->heuristic = Heuristic(children[i], goal_state);
             children[i]->parent = parent;
-            cout << "Heuristic: " << children[i]->heuristic << endl;
+
+            cout << "Heuristic: " << children[i]->heuristic << endl; outFile << "Heuristic: " << children[i]->heuristic << endl;
+
             for (int j = 0; j < 4; ++j) {
                 children[i]->children[j] = NULL;
             }
+            vectorDisplay(children[i]->state_table);
         }
         else {
             children[i]->heuristic = 99;
-            cout << "Heuristic: " << children[i]->heuristic << endl;
+            children[i]->state_table.clear();
         }
         parent->children[i] = children[i];
-        vectorDisplay(children[i]->state_table);
     }
 
     minHeuristic = children[0]->heuristic;
@@ -195,9 +205,6 @@ Node *createChild(Node *parent, vector<int> goal_state)
     if (duplicate > 1) {
         currentNode = children[ifDuplicateHueristic(children, minHeuristic)];
     }
-
-
-    cout << "=====================================" << endl;
 
     return currentNode;
 }
@@ -244,9 +251,17 @@ void hillClimbing(Node *node, vector<int> goal_state)
     }
     currentNode = createChild(node, goal_state);
 
-    while (1) {
-        if (isGoal(currentNode, goal_state)) break;
+    while(!isGoal(currentNode, goal_state)) {
         currentNode = createChild(currentNode, goal_state);
+        cout << "=====================================" << endl; outFile << "=====================================" << endl;
     }
+    vectorDisplay(currentNode->state_table);
+
+//    Node *backward = currentNode;
+//    while (backward) {
+//        vectorDisplay(backward->state_table);
+//        backward = backward->parent;
+//    }
+
 }
 

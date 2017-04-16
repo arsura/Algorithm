@@ -2,7 +2,7 @@
 1491409091 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\hill_climbing\main.cpp
 	"Eight_Puzzle.h"
 
-1491409123 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\hill_climbing\eight_puzzle.h
+1492097286 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\hill_climbing\eight_puzzle.h
 	<iostream>
 	<vector>
 	<fstream>
@@ -10,6 +10,20 @@
 	<ctime>
 	<cstdlib>
 
-1491409121 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\hill_climbing\eight_puzzle.cpp
+1492196146 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\hill_climbing\eight_puzzle.cpp
+	"Eight_Puzzle.h"
+
+1492195628 source:d:\programing\hill_climbing\hill_climbing\eight_puzzle.cpp
+	"Eight_Puzzle.h"
+
+1492097284 d:\programing\hill_climbing\hill_climbing\eight_puzzle.h
+	<iostream>
+	<vector>
+	<fstream>
+	<algorithm>
+	<ctime>
+	<cstdlib>
+
+1492108379 source:d:\programing\hill_climbing\hill_climbing\main.cpp
 	"Eight_Puzzle.h"
 
