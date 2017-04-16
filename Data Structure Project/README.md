@@ -6,4 +6,4 @@
   - Replace Word (Modify), Can call Insert and Delete function O(n)
   - Destroyed O(mn)
   
-  n: length of words (all of ), m: number all of the words 
+  n: length of words, m: number all of the words 
