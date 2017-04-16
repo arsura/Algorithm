@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1491331975 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
+1492012020 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\main.cpp
 	"TrieHeader.h"
 
-1491331237 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.cpp
+1492012270 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\basicproperties.cpp
 	"TrieHeader.h"
 
-1491331783 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\trieheader.h
+1492009918 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\trieheader.h
 	<iostream>
 	<cstdlib>
 	<vector>
@@ -18,16 +18,16 @@
 	<algorithm>
 	<ctime>
 
-1491331426 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\autocomplete.cpp
+1492011908 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\autocomplete.cpp
 	"TrieHeader.h"
 
-1491331506 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.cpp
+1492010156 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\searchallword.cpp
 	"TrieHeader.h"
 
 1491331625 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\starbeforeword.cpp
 	"TrieHeader.h"
 
-1491331930 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\stringmatching.cpp
+1492012142 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\data structure project\trie\stringmatching.cpp
 	"TrieHeader.h"
 
 1491983899 source:c:\users\arsura\downloads\trie\trie\autocomplete.cpp
