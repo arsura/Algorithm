@@ -28,9 +28,9 @@
   
   แหล่งอ้างอิง
   
-  [Trie | (Insert and Search) - GeeksforGeeks](http://www.geeksforgeeks.org/trie-insert-and-search/) พื้นฐานและไอเดียในการเขียนโค้ด
-  [Trie - Wikipedia](https://en.wikipedia.org/wiki/Trie)
-  [ทรัย (โครงสร้างข้อมูล)](https://th.wikipedia.org/wiki/ทรัย_(โครงสร้างข้อมูล))
+  [Trie | (Insert and Search) - GeeksforGeeks](http://www.geeksforgeeks.org/trie-insert-and-search/) พื้นฐานและไอเดียในการเขียนโค้ด <br/>
+  [Trie - Wikipedia](https://en.wikipedia.org/wiki/Trie) <br/>
+  [ทรัย (โครงสร้างข้อมูล)](https://th.wikipedia.org/wiki/ทรัย_(โครงสร้างข้อมูล)) <br/>
   
   
    
