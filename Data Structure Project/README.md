@@ -1,5 +1,5 @@
 # Data Structure Project
-  Trie (Prefix Tree)
+  Trie
   - Space O(mn)
   - Insert O(n)
   - Delete O(n)
