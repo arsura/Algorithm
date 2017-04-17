@@ -5,7 +5,7 @@
   - Space O(nm)
   - Insert O(m), เพิ่มข้อมูล
   - Delete O(m), ลบข้อมูล
-  - Modify (Replace) O(m), การแก้ไขคำโดยสามารถเรียกใช้ฟังก์ชั่น Delete และ Insert เพื่อ Replace
+  - Modify (Replace) O(m), การแก้ไขคำสามารถทำได้โดยเรียกใช้ฟังก์ชั่น Delete และ Insert เพื่อ Replace
   - Destroy O(mn), ลบโหนดทุกโหนดใน Trie
   - SearchAllWord, O(mn) เรียกดูคำทุกคำใน Trie  
   
@@ -19,7 +19,7 @@
   
   **คำถาม**
   
-  ถ้าต้องการค้นหาคำแบบ reverse (ค้นจากท้ายคำ) ตัวอย่างเช่นมีคำว่า vat, fat, rat, cat, hat อยู่ใน trie ต้องการค้น at แล้วได้คำที่ว่าทั้งหมดออกมาจะต้องทำอย่างไร   ? 
+  ถ้าต้องการ Autocomplete แบบ reverse (ค้นจากท้ายคำ) ตัวอย่างเช่นมีคำว่า vat, fat, rat, cat, hat อยู่ใน trie ต้องการค้น at แล้วได้คำที่ว่าทั้งหมดออกมาจะต้อง   ทำอย่างไร   ? 
   - สร้าง Trie (Reverse Trie) สำหรับเก็บ reverse word (คำที่สลับจากหลังมาหน้า) ควบคู่ไปกับ Trie ปกติด้วย, จะมี 2 Root Node ซึ่งอิสระต่อกันในการค้นหาและการ     ทำ Autocomplete แต่สำหรับขั้นตอนการ Delete, Modify, Destroy, Insert ต้องเรียกทั้ง Trie และ Reverse Trie เพื่อดำเนินการ
   - หรืออีกวิธีคือทำการเพิ่มการจองพื้นที่ของตัวชี้คีย์จาก 128 เป็น 256 โดยตำแหน่งที่ 129 - 255 จะทำการเก็บ reverse word จะมี Root Node เพียง 1 เดียว
   
