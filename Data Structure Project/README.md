@@ -1,2 +1,2 @@
-# Data Structure Project
-  Trie
+# Trie
+  Data Structure Project
