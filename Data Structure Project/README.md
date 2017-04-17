@@ -35,7 +35,8 @@
   Advanced Data Structures, 13 Advanced Tree Structures, 13.1 Trie, Page 439 <br/>
   
   Visualization
-  [Trie (Prefix Tree)](https://www.cs.usfca.edu/~galles/visualization/Trie.html) จำเป็นและสำคัญมากในการ implement<br/>
+  
+  [Trie (Prefix Tree)](https://www.cs.usfca.edu/~galles/visualization/Trie.html) จำเป็นและสำคัญมากในการ implement <br/>
   
  
 
