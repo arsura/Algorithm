@@ -32,7 +32,11 @@
   [Trie - Wikipedia](https://en.wikipedia.org/wiki/Trie) <br/>
   [ทรัย (โครงสร้างข้อมูล)](https://th.wikipedia.org/wiki/ทรัย_(โครงสร้างข้อมูล)) <br/>
   [Data Structures and Algorithm Analysis, Clifford A. Shaffer](http://people.cs.vt.edu/~shaffer/Book/C++3elatest.pdf) PART IV
-  Advanced Data Structures, 13 Advanced Tree Structures, 13.1 Trie, Page 439
+  Advanced Data Structures, 13 Advanced Tree Structures, 13.1 Trie, Page 439 <br/>
+  
+  Visualization
+  [Trie (Prefix Tree)](https://www.cs.usfca.edu/~galles/visualization/Trie.html) จำเป็นและสำคัญมากในการ implement<br/>
+  
  
 
   
