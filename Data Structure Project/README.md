@@ -25,7 +25,7 @@
   แต่ทั้งนี้ไม่ว่าจะวิธีไหนก็จะใช้พื้นที่เพิ่มเป็น 2 เท่า
   --------------------------------------------------------------
   แหล่งอ้างอิง
-  - [ทรัย (โครงสร้างข้อมูล)]      
-  (https://th.wikipedia.org/wiki/%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%A2_(%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%    B8%B2%E0%B8%87%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5)) <br/>
-  - [Create GitHub Directory Download Link by DownGit](https://minhaskamal.github.io/DownGit/#/home) <br/>
+  [Trie | (Insert and Search) - GeeksforGeeks](http://www.geeksforgeeks.org/trie-insert-and-search/), พื้นฐานและไอเดียในการเขียนโค้ด
+  [Trie - Wikipedia](https://en.wikipedia.org/wiki/Trie)
   
+   
