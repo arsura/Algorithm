@@ -1,7 +1,7 @@
 # Trie
   Data Structure Project
   
-  ฟังก์ชั่นพื้นฐาน
+  **ฟังก์ชั่นพื้นฐาน**
   - Space O(nm)
   - Insert O(m), เพิ่มข้อมูล
   - Delete O(m), ลบข้อมูล
@@ -9,14 +9,14 @@
   - Destroy O(mn), ลบโหนดทุกโหนดใน Trie
   - SearchAllWord, O(mn) เรียกดูคำทุกคำใน Trie  
   
-  ฟังก์ชั่นเพิ่มเติม
+  **ฟังก์ชั่นเพิ่มเติม**
   - Autocomplete O(mk)
   - StringMatching O(mn)
   
   โดย m คือความยาวตัวอักษร, n คือจำนวนตัวอักษรทั้งหมด, k คือจำนวนตัวอักษรที่ค้นเจอ (ซึ่งไม่ใช่ทุกคำใน Trie)
   
   --------------------------------------------------------------
-  คำถาม
+  **คำถาม**
   
   ถ้าต้องการค้นหาคำแบบ reverse (ค้นจากท้ายคำ) ตัวอย่างเช่นมีคำว่า vat, fat, rat, cat, hat อยู่ใน trie ต้องการค้น at แล้วได้คำที่ว่าทั้งหมดออกมาจะต้องทำอย่างไร ? 
   - สร้าง Trie (Reverse Trie) สำหรับเก็บ reverse word (คำที่สลับจากหลังมาหน้า) ควบคู่ไปกับ Trie ปกติด้วย, จะมี 2 Root Node ซึ่งอิสระต่อกันในการค้นหาและการทำ     Autocomplete แต่สำหรับขั้นตอนการ Delete, Modify, Destroy, Insert ต้องเรียกทั้ง Trie และ Reverse Trie เพื่อดำเนินการ
@@ -32,7 +32,7 @@
   - [ทรัย (โครงสร้างข้อมูล)](https://th.wikipedia.org/wiki/ทรัย_(โครงสร้างข้อมูล)) <br/>
   - [Data Structures and Algorithm Analysis, Clifford A. Shaffer](http://people.cs.vt.edu/~shaffer/Book/C++3elatest.pdf) PART IV
     Advanced Data Structures, 13 Advanced Tree Structures, 13.1 Trie, Page 439 <br/>
-  
+    
   **Visualization** <br/>
   - [Trie (Prefix Tree)](https://www.cs.usfca.edu/~galles/visualization/Trie.html) จำเป็นและสำคัญมากในการ implement <br/>
   
