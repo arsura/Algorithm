@@ -23,9 +23,13 @@
   - ทำการเพิ่มการจองพื้นที่ของตัวชี้คีย์ในจาก 128 เป็น 256 โดยตำแหน่งที่ 129 - 255 จะทำการเก็บ reverse word จะมี Root Node เพียง 1 เดียว
   
   แต่ทั้งนี้ไม่ว่าจะวิธีไหนก็จะใช้พื้นที่เพิ่มเป็น 2 เท่า
+  
   --------------------------------------------------------------
+  
   แหล่งอ้างอิง
+  
   [Trie | (Insert and Search) - GeeksforGeeks](http://www.geeksforgeeks.org/trie-insert-and-search/), พื้นฐานและไอเดียในการเขียนโค้ด
+  
   [Trie - Wikipedia](https://en.wikipedia.org/wiki/Trie)
   
    
