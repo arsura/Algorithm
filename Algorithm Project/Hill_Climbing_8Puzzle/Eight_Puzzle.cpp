@@ -1,0 +1,272 @@
+#include "Eight_Puzzle.h"
+
+ofstream outFile("display.txt");
+
+void vectorDisplay(vector<int> state)
+{
+    int vector_size = state.size();
+    for (int i = 0; i < vector_size; ++i) {
+        if (i % 3 == 0 && i != 0) {
+            cout << endl;
+            outFile << endl;
+        }
+        cout << state[i] << " ";
+        outFile << state[i] << " ";
+    }
+    outFile << endl << endl;
+    cout << endl << endl;
+}
+
+void ReadFile(vector<int> &begin_state, vector<int> &goal_state)
+{
+    ifstream inFile("input.txt");
+    if (!inFile) cerr << "file not found" << endl;
+    int item;
+    int Count = 0;
+    while (inFile >> item) {
+        ++Count;
+        if (Count <= 9) begin_state.push_back(item);
+        else goal_state.push_back(item);
+    }
+    inFile.close();
+}
+
+int manhattanHeuristic(Node *node, vector<int> goal_state)
+{
+    int arrInitial[3][3] = {0};
+    int arrGoal[3][3] = {0};
+
+    int c = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            arrInitial[i][j] = node->state_table[c];
+            arrGoal[i][j] = goal_state[c];
+            ++c;
+        }
+    }
+    int Find;
+    int x;
+    int y;
+    int Manhattan = 0;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; j++) {
+            if (arrInitial[i][j] != arrGoal[i][j] && arrInitial[i][j] != 0) {
+                Find = arrInitial[i][j];
+                for (int k = 0; k < 3; k++) {
+                    for (int l = 0; l < 3; l++) {
+                        if (arrGoal[k][l] == Find) {
+                            x = abs(k - i);
+                            y = abs(l - j);
+                            Manhattan += x + y;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return Manhattan;
+}
+
+void createRoot(Node *root, vector<int> state, vector<int> goal)
+{
+    int vector_size = state.size();
+    for (int i = 0; i < vector_size; ++i) {
+        root->state_table.push_back(state[i]);
+
+        if (state[i] == 0) {
+            root->empty_index = i;
+        }
+        if (i < 5) {
+            root->children[i] = NULL;
+        }
+    }
+    root->distance = 1;
+    root->parent = NULL;
+    root->heuristic = manhattanHeuristic(root, goal);
+
+}
+
+int misplacedHeuristic(Node *node, vector<int> goal_state)
+{
+	int misplacedHeuristic = 0;
+	int vector_size = node->state_table.size();
+	for (int i = 0; i < vector_size; i++) {
+		if (node->state_table[i] != goal_state[i]) {
+			misplacedHeuristic++;
+		}
+	}
+	return misplacedHeuristic;
+}
+
+int Heuristic(Node *node, vector<int> goal_state)
+{
+//    return misplacedHeuristic(node, goal_state);
+    return manhattanHeuristic(node, goal_state);
+}
+
+
+bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
+{
+    child->state_table = parent->state_table;
+    child->empty_index = parent->empty_index;
+
+    switch (moving) {
+        case 'u':
+            if (child->empty_index > 2) {
+                swap(child->state_table[child->empty_index], child->state_table[child->empty_index - 3]);
+            }
+            else {
+                return false;
+            }
+            break;
+
+        case 'r':
+            if (child->empty_index % 3 != 2) {
+                swap(child->state_table[child->empty_index], child->state_table[child->empty_index + 1]);
+            }
+            else {
+                return false;
+            }
+            break;
+
+        case 'l':
+            if (child->empty_index % 3 != 0) {
+                swap(child->state_table[child->empty_index], child->state_table[child->empty_index - 1]);
+            }
+            else {
+                return false;
+            }
+            break;
+
+        case 'd':
+            if (child->empty_index < 6) {
+                swap(child->state_table[child->empty_index], child->state_table[child->empty_index + 3]);
+            }
+            else {
+                return false;
+            }
+            break;
+    }
+
+    findIndex(child);
+    if (parent->distance > 1 && child->empty_index == parent->parent->empty_index)
+        return false;
+
+    return true;
+}
+
+Node *createChild(Node *parent, vector<int> goal_state)
+{
+//    vectorDisplay(parent->state_table);
+
+    Node *currentNode;
+    Node *children[4];
+    char moving[4] = {'u', 'r', 'l', 'd'};
+    int minHeuristic;
+
+    for (int i = 0; i < 4; ++i) {
+        children[i] = new Node;
+        findIndex(parent);
+        if (Move(parent, children[i], moving[i], goal_state)) {
+            children[i]->distance = parent->distance + 1;
+            children[i]->heuristic = Heuristic(children[i], goal_state);
+            children[i]->parent = parent;
+
+//            cout << "Heuristic: " << children[i]->heuristic << endl;
+//            outFile << "Heuristic: " << children[i]->heuristic << endl;
+
+            for (int j = 0; j < 4; ++j) {
+                children[i]->children[j] = NULL;
+            }
+//            vectorDisplay(children[i]->state_table);
+        }
+        else {
+            children[i]->heuristic = 99;
+            children[i]->state_table.clear();
+        }
+        parent->children[i] = children[i];
+    }
+
+    minHeuristic = children[0]->heuristic;
+    currentNode = children[0];
+    for (int i = 0; i < 4; ++i) {
+        if (minHeuristic > children[i]->heuristic && children[i]->heuristic != 99) {
+            minHeuristic = children[i]->heuristic;
+            currentNode = children[i];
+        }
+    }
+
+    int duplicate = 0;
+    for (int i = 0; i < 4; i++) {
+        if (children[i]->heuristic == minHeuristic) {
+            ++duplicate;
+        }
+    }
+
+    if (duplicate > 1) {
+        currentNode = children[ifDuplicateHueristic(children, minHeuristic)];
+    }
+
+    return currentNode;
+}
+
+int ifDuplicateHueristic(Node **node, int minHeuristic)
+{
+    int Rand = rand() % 4;
+    while (1) {
+        if (node[Rand]->heuristic == minHeuristic) {
+            return Rand;
+        }
+        else {
+            Rand = rand() % 4;
+        }
+    }
+}
+
+void findIndex(Node *node)
+{
+    int vector_size = node->state_table.size();
+    for (int i = 0; i < vector_size; ++i) {
+        if (node->state_table[i] == 0) {
+            node->empty_index = i;
+            return;
+        }
+    }
+}
+
+bool isGoal(Node *node, vector<int> goal_state)
+{
+    int vector_size = goal_state.size();
+    for (int i = 0; i < vector_size; ++i) {
+        if (node->state_table[i] != goal_state[i])
+            return false;
+    }
+    return true;
+}
+
+void hillClimbing(Node *node, vector<int> goal_state)
+{
+    Node *currentNode = new Node;
+    if (isGoal(node, goal_state)) {
+        return;
+    }
+    currentNode = createChild(node, goal_state);
+
+    while(!isGoal(currentNode, goal_state)) {
+        currentNode = createChild(currentNode, goal_state);
+
+//        cout << "=====================================" << endl;
+//        outFile << "=====================================" << endl;
+    }
+
+    cout << "Finish" << endl;
+    vectorDisplay(currentNode->state_table);
+
+//    Node *backward = currentNode;
+//    while (backward) {
+//        vectorDisplay(backward->state_table);
+//        backward = backward->parent;
+//    }
+
+}
+

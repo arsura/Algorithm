@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1492766042 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing\main.cpp
+	"Eight_Puzzle.h"
+
+1492781567 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing\eight_puzzle.cpp
+	"Eight_Puzzle.h"
+
+1492765899 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing\eight_puzzle.h
+	<iostream>
+	<vector>
+	<fstream>
+	<algorithm>
+	<ctime>
+	<cstdlib>
+
+1492791690 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\eight_puzzle.cpp
+	"Eight_Puzzle.h"
+
+1492765899 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\eight_puzzle.h
+	<iostream>
+	<vector>
+	<fstream>
+	<algorithm>
+	<ctime>
+	<cstdlib>
+
+1492766042 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\main.cpp
+	"Eight_Puzzle.h"
+
