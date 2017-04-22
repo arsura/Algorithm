@@ -1,7 +1,6 @@
 #include "Eight_Puzzle.h"
 
 ofstream outFile("display.txt");
-ofstream heuristic("heuristic.txt");
 
 void vectorDisplay(vector<int> state)
 {
@@ -159,7 +158,6 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
 Node *createChild(Node *parent, vector<int> goal_state)
 {
 //    vectorDisplay(parent->state_table);
-    hue
 
     Node *currentNode;
     Node *children[4];
@@ -256,9 +254,10 @@ void hillClimbing(Node *node, vector<int> goal_state)
 
     while(!isGoal(currentNode, goal_state)) {
         currentNode = createChild(currentNode, goal_state);
-//        cout << "=====================================" << endl;
-//        outFile << "=====================================" << endl;
+        outFile << "=====================================" << endl;
     }
+
+    cout << "Finish" << endl;
     vectorDisplay(currentNode->state_table);
 
 //    Node *backward = currentNode;

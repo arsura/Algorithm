@@ -1,20 +1,21 @@
 #include "Eight_Puzzle.h"
 
-ofstream outFile("display.txt");
+ofstream outFile("print/display.txt");
+ofstream betterPath("print/cost.txt");
 
 void vectorDisplay(vector<int> state)
 {
     int vector_size = state.size();
     for (int i = 0; i < vector_size; ++i) {
         if (i % 3 == 0 && i != 0) {
-            cout << endl;
+//            cout << endl;
             outFile << endl;
         }
-        cout << state[i] << " ";
+//        cout << state[i] << " ";
         outFile << state[i] << " ";
     }
     outFile << endl << endl;
-    cout << endl << endl;
+//    cout << endl << endl;
 }
 
 void ReadFile(vector<int> &begin_state, vector<int> &goal_state)
@@ -157,7 +158,8 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
 
 Node *createChild(Node *parent, vector<int> goal_state, double temperature)
 {
-//    vectorDisplay(parent->state_table);
+    vectorDisplay(parent->state_table);
+    betterPath << parent->heuristic << endl;
 
     Node *children[4];
     char moving[4] = {'u', 'r', 'l', 'd'};
@@ -171,12 +173,12 @@ Node *createChild(Node *parent, vector<int> goal_state, double temperature)
             children[i]->parent = parent;
 
 //            cout << "Heuristic: " << children[i]->heuristic << endl;
-//            outFile << "Heuristic: " << children[i]->heuristic << endl;
+            outFile << "Heuristic: " << children[i]->heuristic << endl;
 
             for (int j = 0; j < 4; ++j) {
                 children[i]->children[j] = NULL;
             }
-//            vectorDisplay(children[i]->state_table);
+            vectorDisplay(children[i]->state_table);
         }
         else {
             children[i]->heuristic = 99;
@@ -188,11 +190,20 @@ Node *createChild(Node *parent, vector<int> goal_state, double temperature)
     for (int i = 0; i < 4; ++i) {
         if (children[i]->heuristic != 99) {
             int delta_E = children[i]->heuristic - parent->heuristic;
+            cout << children[i]->heuristic << " "
             if (delta_E < 0 || double_random() < pow(exp(1), -(delta_E / (temperature)))) {
                 return children[i];
             }
         }
     }
+
+//    for (int i = 0; i < 4; i++) {
+//        if (children[i]->heuristic != 99) {
+//            return children[i];
+//        }
+//    }
+
+
 
 //    int minHeuristic = children[0]->heuristic;
 //    Node *currentNode = children[0];
@@ -258,25 +269,33 @@ double double_random()
 
 void simulated_annealing(Node *node, vector<int> goal_state)
 {
+    outFile << "Begin State" << endl; vectorDisplay(node->state_table);
+    outFile << "Goal State" << endl; vectorDisplay(goal_state);
+    outFile << "-----------------------------------" << endl;
+
     Node *newState = node;
     if (isGoal(node, goal_state)) {
         return;
     }
 
-    double max_temperature = ((double)newState->heuristic) * 1000.00;
+    double max_temperature = ((double)newState->heuristic) * 10.00;
     double temperature = max_temperature;
 
-//    vectorDisplay(newState->state_table);
+    vectorDisplay(newState->state_table);
 
     while (temperature > 0.001 && !isGoal(newState, goal_state)) {
         int N = max_temperature - temperature;
         for (int i = 0; i < N; i++) {
             newState = createChild(newState, goal_state, temperature);
-//            cout << "=====================================" << endl;
-//            outFile << "=====================================" << endl;
+//            cout << "===============================" << endl;
+            outFile << "===============================" << endl;
         }
         temperature *= 0.999;
     }
+
+    outFile << "Finish" << endl;
+    vectorDisplay(newState->state_table);
+
 }
 
 

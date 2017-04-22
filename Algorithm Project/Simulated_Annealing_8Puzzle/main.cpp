@@ -10,9 +10,6 @@ int main()
     ReadFile(begin_state, goal_state);
     createRoot(state, begin_state, goal_state);
 
-    cout << "Begin State" << endl; vectorDisplay(begin_state);
-    cout << "Goal State" << endl; vectorDisplay(goal_state);
-
 //    start = clock();
     simulated_annealing(state, goal_state);
 //    duration = clock() - start;

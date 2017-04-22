@@ -1,20 +1,21 @@
 #include "Eight_Puzzle.h"
 
-ofstream outFile("display.txt");
+ofstream outFile("print/display.txt");
+ofstream betterPath("print/cost.txt");
 
 void vectorDisplay(vector<int> state)
 {
     int vector_size = state.size();
     for (int i = 0; i < vector_size; ++i) {
         if (i % 3 == 0 && i != 0) {
-            cout << endl;
+//            cout << endl;
             outFile << endl;
         }
-        cout << state[i] << " ";
+//        cout << state[i] << " ";
         outFile << state[i] << " ";
     }
     outFile << endl << endl;
-    cout << endl << endl;
+//    cout << endl << endl;
 }
 
 void ReadFile(vector<int> &begin_state, vector<int> &goal_state)
@@ -157,7 +158,8 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
 
 Node *createChild(Node *parent, vector<int> goal_state)
 {
-//    vectorDisplay(parent->state_table);
+    vectorDisplay(parent->state_table);
+    betterPath << parent->heuristic << endl;
 
     Node *currentNode;
     Node *children[4];
@@ -173,12 +175,12 @@ Node *createChild(Node *parent, vector<int> goal_state)
             children[i]->parent = parent;
 
 //            cout << "Heuristic: " << children[i]->heuristic << endl;
-//            outFile << "Heuristic: " << children[i]->heuristic << endl;
+            outFile << "Heuristic: " << children[i]->heuristic << endl;
 
             for (int j = 0; j < 4; ++j) {
                 children[i]->children[j] = NULL;
             }
-//            vectorDisplay(children[i]->state_table);
+            vectorDisplay(children[i]->state_table);
         }
         else {
             children[i]->heuristic = 99;
@@ -246,6 +248,10 @@ bool isGoal(Node *node, vector<int> goal_state)
 
 void hillClimbing(Node *node, vector<int> goal_state)
 {
+    outFile << "Begin State" << endl; vectorDisplay(node->state_table);
+    outFile << "Goal State" << endl; vectorDisplay(goal_state);
+    outFile << "-----------------------------------" << endl << endl;
+
     Node *currentNode = new Node;
     if (isGoal(node, goal_state)) {
         return;
@@ -254,12 +260,10 @@ void hillClimbing(Node *node, vector<int> goal_state)
 
     while(!isGoal(currentNode, goal_state)) {
         currentNode = createChild(currentNode, goal_state);
-
-//        cout << "=====================================" << endl;
-//        outFile << "=====================================" << endl;
+        outFile << "===============================" << endl;
     }
 
-    cout << "Finish" << endl;
+    outFile << "Finish" << endl;
     vectorDisplay(currentNode->state_table);
 
 //    Node *backward = currentNode;

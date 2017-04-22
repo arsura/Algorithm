@@ -13,17 +13,18 @@
 	<ctime>
 	<cstdlib>
 
-1492791690 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\eight_puzzle.cpp
+1492859457 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\eight_puzzle.cpp
 	"Eight_Puzzle.h"
 
-1492765899 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\eight_puzzle.h
+1492871610 d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\eight_puzzle.h
 	<iostream>
 	<vector>
 	<fstream>
 	<algorithm>
 	<ctime>
 	<cstdlib>
+	<cmath>
 
-1492766042 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\main.cpp
+1492858778 source:d:\documents\bachelor’s degree\sophomore\algorithm analysis and design\algorithm project\simulated_annealing_8puzzle\main.cpp
 	"Eight_Puzzle.h"
 

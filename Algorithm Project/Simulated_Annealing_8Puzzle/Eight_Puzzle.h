@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -30,7 +31,6 @@ bool isGoal(Node *node, vector<int> goal_state);
 void findIndex(Node *node);
 bool Move(Node *parent, Node *child, char moving, vector<int> goal_state);
 Node *createChild(Node *parent, vector<int> goal_state, double temperature);
-int ifDuplicateHueristic(Node **node, int minHeuristic);
 int Heuristic(Node *node, vector<int> goal_state);
 double double_random();
 void simulated_annealing(Node *node, vector<int> goal_state);
