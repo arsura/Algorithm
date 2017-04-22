@@ -30,7 +30,7 @@
   - [Trie | (Insert and Search) - GeeksforGeeks](http://www.geeksforgeeks.org/trie-insert-and-search/) พื้นฐานและไอเดียในการเขียนโค้ด <br/>
   - [Trie - Wikipedia](https://en.wikipedia.org/wiki/Trie) <br/>
   - [ทรัย (โครงสร้างข้อมูล)](https://th.wikipedia.org/wiki/ทรัย_(โครงสร้างข้อมูล)) <br/>
-  - [Data Structures and Algorithm Analysis, Clifford A. Shaffer (p.439 - 443)](http://people.cs.vt.edu/~shaffer/Book/C++3elatest.pdf)       <br/>
+  - [Data Structures and Algorithm Analysis, Clifford A. Shaffer (p. 439 - 443)](http://people.cs.vt.edu/~shaffer/Book/C++3elatest.pdf)       <br/>
     
   **Visualization** <br/>
   - [Trie (Prefix Tree)](https://www.cs.usfca.edu/~galles/visualization/Trie.html) จำเป็นและสำคัญมากในการ implement <br/>
