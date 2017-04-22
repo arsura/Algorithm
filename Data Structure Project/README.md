@@ -3,6 +3,11 @@
   
   ![Trie](https://github.com/arsura/Algorithm/blob/master/Data%20Structure%20Project/Trie/picture/Trie.PNG)
   
+  **ลักษณะโครงสร้าง**
+  - แต่ละโหนดมีตัวชี้คีย์ของตัวถัดไป
+  - มีสถานะบอกว่าคือตัวอักษรสุดท้ายของคำ
+  - เมื่อคำถูกเพิ่มเข้าไปใน Trie จะถูกเก็บแบบเรียงลำดับตาม Dictionary
+  
   **ฟังก์ชั่นพื้นฐาน**
   - Space O(mn)
   - Insert O(m), เพิ่มข้อมูล
