@@ -1,6 +1,8 @@
 # Trie
   Data Structure Project
   
+  ![Trie](https://github.com/arsura/Algorithm/blob/master/Data%20Structure%20Project/Trie/picture/Trie.PNG)
+  
   **ฟังก์ชั่นพื้นฐาน**
   - Space O(mn)
   - Insert O(m), เพิ่มข้อมูล
