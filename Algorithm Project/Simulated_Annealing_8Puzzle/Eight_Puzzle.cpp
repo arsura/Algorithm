@@ -242,7 +242,7 @@ void simulated_annealing(Node *node, vector<int> goal_state)
         return;
     }
 
-    double max_temperature = ((double)newState->heuristic) * 10.00;
+    double max_temperature = ((double)newState->heuristic);
     double temperature = max_temperature;
 
     while (temperature > 0.001 && !isGoal(newState, goal_state)) {
