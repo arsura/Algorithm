@@ -4,7 +4,7 @@ Algorithm Project <br/>
 **คำถาม**
 
 เมื่อปีนเขาไปติดอยู่ที่ local optimum ไปไม่ถึง global optimum ต้องใช้วิธีอะไรแก้ ?
-- Simulated Annealing แนวคิดคือรับ heuristic ที่แย่บ้างเพื่อให้หลุดออกจาก local optimum
+- ใช้วิธีการ Simulated Annealing (การจำลองการอบเหนียว) แนวคิดคือรับ heuristic ที่แย่บ้างเพื่อให้หลุดออกจาก local optimum
 
 --------------------------------------------------------------
 
