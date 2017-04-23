@@ -37,7 +37,7 @@ Algorithm Project <br/>
 
 เมื่อปีนเขาไปติดอยู่ที่ local optimum ไปไม่ถึง global optimum ต้องใช้วิธีอะไรแก้ ?
 
-<img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/localOpt.png" alt="alt text" width="300" height="300">
+<img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/localOpt.png" alt="alt text" width="450" height="450">
 
 - ใช้วิธีการ Simulated Annealing (การจำลองการอบเหนียว) 
 - ใช้วิธีการที่รับ heuristic ที่แย่บ้างเพื่อให้หลุดออกจาก local optimum
