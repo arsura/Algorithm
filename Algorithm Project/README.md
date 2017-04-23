@@ -47,6 +47,8 @@ Algorithm Project <br/>
 <img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/local_opt.png" alt="alt text" width="450" height="450">
 
 - ใช้วิธีการ Simulated Annealing (การจำลองการอบเหนียว) 
+<img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/simulated_annealing_graph.png" alt="alt text" width="" height="">
+
 - ใช้วิธีการที่รับ heuristic ที่แย่บ้างเพื่อให้หลุดออกจาก local optimum
 <img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/hill_climbing_graph.png" alt="alt text" width="" height="">
 
