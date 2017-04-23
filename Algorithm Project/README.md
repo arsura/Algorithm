@@ -35,7 +35,7 @@ Algorithm Project <br/>
 
 **ขั้นตอนการทำงานของ Hill Climbing กับปัญหา 8-Puzzle**
 
-<img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/procedures.png" alt="alt text" width="1887" height="2953">
+<img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/procedures.png" alt="alt text" width="943.5" height="1476.5">
 
 --------------------------------------------------------------
 
