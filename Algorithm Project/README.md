@@ -48,6 +48,7 @@ Algorithm Project <br/>
 
 - ใช้วิธีการ Simulated Annealing (การจำลองการอบเหนียว) 
 - ใช้วิธีการที่รับ heuristic ที่แย่บ้างเพื่อให้หลุดออกจาก local optimum
+<img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/hill_climbing_graph.png" alt="alt text" width="" height="">
 
 --------------------------------------------------------------
 
