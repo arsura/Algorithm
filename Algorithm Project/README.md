@@ -46,12 +46,15 @@ Algorithm Project <br/>
 เมื่อปีนเขาไปติดอยู่ที่ local optimum ไปไม่ถึง global optimum ต้องใช้วิธีอะไรแก้ ?
 <img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/local_opt.png" alt="alt text" width="450" height="450">
 
-- ใช้วิธีการ Simulated Annealing (การจำลองการอบเหนียว) **กราฟของสถานะเดียวกันกับที่แสดงให้ดูในหัวข้อขั้นตอนการทำงาน**
-<img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/simulated_annealing_graph.png" alt="alt text" width="" height="">
-
-- ใช้วิธีการที่รับ heuristic ที่แย่บ้างเพื่อให้หลุดออกจาก local optimum **กราฟของสถานะเดียวกันกับที่แสดงให้ดูในหัวข้อขั้นตอนการทำงาน**
+- ใช้วิธีการที่รับ heuristic ที่แย่บ้างเพื่อให้หลุดออกจาก local optimum
 <img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/hill_climbing_graph.png" alt="alt text" width="" height="">
 
+- ใช้วิธีการ Simulated Annealing (การจำลองการอบเหนียว)
+<img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/simulated_annealing_graph.png" alt="alt text" width="" height="">
+จากกราฟจะเห็นได้ว่ามีการยอมรับค่าตัดสินใจในช่วงที่กว้างมาก และมีการรับค่าตัดสินใจที่แย่ ๆ เกิดขึ้น จึงมั่นใจได้ว่าจะสามารถหลุดออกจาก Local Optimum แน่นอน
+
+
+ **กราฟที่นำมาแสดงใช้สถานะเริ่มต้นและสถานะสิ้นสุดเดียวกันกับสถานะที่แสดงในหัวข้อขั้นตอนการทำงาน**
 --------------------------------------------------------------
 
 **คำอธิบาย**
