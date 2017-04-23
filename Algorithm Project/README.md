@@ -37,6 +37,8 @@ Algorithm Project <br/>
 
 <img src="https://github.com/arsura/Algorithm/blob/master/Algorithm%20Project/Hill_Climbing_8Puzzle/picture/procedures.png" alt="alt text" width="900" height="1433">
 
+จากภาพจะเห็นได้ว่าการเลือกสถานะถัดไปในแต่ละครั้งต้องมีการยอมรับค่าที่แย่กว่าสถานะปัจุบันด้วย (แต่เป็นสถานะที่ดีที่สุดเมื่อเทียบกับ Neighbor Node) เพื่อไม่ให้ติด Local Optimum และไปต่อไม่ได้
+
 --------------------------------------------------------------
 
 **คำถาม**
