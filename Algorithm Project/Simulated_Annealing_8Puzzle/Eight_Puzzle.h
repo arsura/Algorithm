@@ -32,6 +32,7 @@ void findIndex(Node *node);
 bool Move(Node *parent, Node *child, char moving, vector<int> goal_state);
 Node *createChild(Node *parent, vector<int> goal_state, double temperature);
 int Heuristic(Node *node, vector<int> goal_state);
+int ifDuplicateHueristic(Node **node, int minHeuristic);
 double double_random();
 void simulated_annealing(Node *node, vector<int> goal_state);
 

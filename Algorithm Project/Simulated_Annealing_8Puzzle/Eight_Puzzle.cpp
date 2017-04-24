@@ -156,6 +156,19 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
     return true;
 }
 
+int ifDuplicateHueristic(Node **node, int minHeuristic)
+{
+    int Rand = rand() % 4;
+    while (1) {
+        if (node[Rand]->heuristic == minHeuristic) {
+            return Rand;
+        }
+        else {
+            Rand = rand() % 4;
+        }
+    }
+}
+
 Node *createChild(Node *parent, vector<int> goal_state, double temperature)
 {
     vectorDisplay(parent->state_table);
@@ -187,6 +200,14 @@ Node *createChild(Node *parent, vector<int> goal_state, double temperature)
         parent->children[i] = children[i];
     }
 
+    // best child
+    for (int i = 0; i < 4; i++) {
+        if (children[i]->heuristic == 1) {
+            return children[i];
+        }
+    }
+    // =======================================
+
     for (int i = 0; i < 4; ++i) {
         if (children[i]->heuristic != 99) {
             int delta_E = children[i]->heuristic - parent->heuristic;
@@ -194,14 +215,31 @@ Node *createChild(Node *parent, vector<int> goal_state, double temperature)
             if (delta_E < 0 || double_random() < pow(exp(1), (-(delta_E) / (temperature)))) {
                 return children[i];
             }
+
         }
     }
 
-    for (int i = 0; i < 4; i++) {
-        if (children[i]->heuristic != 99) {
-            return children[i];
+    int minHeuristic = children[0]->heuristic;
+    Node* currentNode = children[0];
+    for (int i = 0; i < 4; ++i) {
+        if (minHeuristic > children[i]->heuristic && children[i]->heuristic != 99) {
+            minHeuristic = children[i]->heuristic;
+            currentNode = children[i];
         }
     }
+
+    int duplicate = 0;
+    for (int i = 0; i < 4; i++) {
+        if (children[i]->heuristic == minHeuristic) {
+            ++duplicate;
+        }
+    }
+
+    if (duplicate > 1) {
+        currentNode = children[ifDuplicateHueristic(children, minHeuristic)];
+    }
+
+    return currentNode;
 
 }
 
@@ -242,17 +280,19 @@ void simulated_annealing(Node *node, vector<int> goal_state)
         return;
     }
 
-    double max_temperature = ((double)newState->heuristic);
+    double max_temperature = ((double)newState->heuristic) * 10.00;
     double temperature = max_temperature;
 
-    while (temperature > 0.001 && !isGoal(newState, goal_state)) {
+    while (temperature > 0.001) {
         int N = max_temperature - temperature;
         for (int i = 0; i < N; i++) {
             newState = createChild(newState, goal_state, temperature);
+            if (isGoal(newState, goal_state)) break;
 //            cout << "===============================" << endl;
             outFile << "===============================" << endl;
         }
         temperature *= 0.999;
+        if (isGoal(newState, goal_state)) break;
     }
 
     outFile << "Finish" << endl;
