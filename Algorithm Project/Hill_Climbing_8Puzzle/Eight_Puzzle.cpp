@@ -1,9 +1,10 @@
 #include "Eight_Puzzle.h"
 
-ofstream outFile("print/display.txt");
+ofstream display("print/display.txt");
 ofstream betterPath("print/cost.txt");
+ofstream Path("print/path.txt");
 
-void vectorDisplay(vector<int> state)
+void vectorDisplay(vector<int> state, ofstream& outFile)
 {
     int vector_size = state.size();
     for (int i = 0; i < vector_size; ++i) {
@@ -158,7 +159,7 @@ bool Move(Node *parent, Node *child, char moving, vector<int> goal_state)
 
 Node *createChild(Node *parent, vector<int> goal_state)
 {
-    vectorDisplay(parent->state_table);
+    vectorDisplay(parent->state_table, display);
     betterPath << parent->heuristic << endl;
 
     Node *currentNode;
@@ -175,12 +176,12 @@ Node *createChild(Node *parent, vector<int> goal_state)
             children[i]->parent = parent;
 
 //            cout << "Heuristic: " << children[i]->heuristic << endl;
-            outFile << "Heuristic: " << children[i]->heuristic << endl;
+            display << "Heuristic: " << children[i]->heuristic << endl;
 
             for (int j = 0; j < 4; ++j) {
                 children[i]->children[j] = NULL;
             }
-            vectorDisplay(children[i]->state_table);
+            vectorDisplay(children[i]->state_table, display);
         }
         else {
             children[i]->heuristic = 99;
@@ -248,9 +249,9 @@ bool isGoal(Node *node, vector<int> goal_state)
 
 void hillClimbing(Node *node, vector<int> goal_state)
 {
-    outFile << "Begin State" << endl; vectorDisplay(node->state_table);
-    outFile << "Goal State" << endl; vectorDisplay(goal_state);
-    outFile << "-----------------------------------" << endl << endl;
+    display << "Begin State" << endl; vectorDisplay(node->state_table, display);
+    display << "Goal State" << endl; vectorDisplay(goal_state, display);
+    display << "-----------------------------------" << endl << endl;
 
     Node *currentNode = new Node;
     if (isGoal(node, goal_state)) {
@@ -260,17 +261,17 @@ void hillClimbing(Node *node, vector<int> goal_state)
 
     while(!isGoal(currentNode, goal_state)) {
         currentNode = createChild(currentNode, goal_state);
-        outFile << "===============================" << endl;
+        display << "===============================" << endl;
     }
 
-    outFile << "Finish" << endl;
-    vectorDisplay(currentNode->state_table);
+    display << "Finish" << endl;
+    vectorDisplay(currentNode->state_table, display);
 
-//    Node *backward = currentNode;
-//    while (backward) {
-//        vectorDisplay(backward->state_table);
-//        backward = backward->parent;
-//    }
+    Node *backward = currentNode;
+    while (backward) {
+        vectorDisplay(backward->state_table, Path);
+        backward = backward->parent;
+    }
 
 }
 

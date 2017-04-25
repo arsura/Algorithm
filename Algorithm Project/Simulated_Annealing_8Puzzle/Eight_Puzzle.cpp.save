@@ -1,9 +1,10 @@
 #include "Eight_Puzzle.h"
 
-ofstream outFile("print/display.txt");
+ofstream display("print/display.txt");
 ofstream betterPath("print/cost.txt");
+ofstream Path("print/path.txt");
 
-void vectorDisplay(vector<int> state)
+void vectorDisplay(vector<int> state, ofstream& outFile)
 {
     int vector_size = state.size();
     for (int i = 0; i < vector_size; ++i) {
@@ -280,22 +281,26 @@ void simulated_annealing(Node *node, vector<int> goal_state)
         return;
     }
 
-    double max_temperature = ((double)newState->heuristic) * 10.00;
+    double max_temperature = ((double)newState->heuristic) * 100.00;
     double temperature = max_temperature;
 
     while (temperature > 0.001) {
         int N = max_temperature - temperature;
         for (int i = 0; i < N; i++) {
             newState = createChild(newState, goal_state, temperature);
-            if (isGoal(newState, goal_state)) break;
+            if (isGoal(newState, goal_state)) {
+                break;
+            }
 //            cout << "===============================" << endl;
             outFile << "===============================" << endl;
         }
+        if (isGoal(newState, goal_state)) {
+            break;
+        }
         temperature *= 0.999;
-        if (isGoal(newState, goal_state)) break;
     }
 
-    outFile << "Finish" << endl;
+    display << "Finish" << endl;
     vectorDisplay(newState->state_table);
 
 }

@@ -1,9 +1,10 @@
 #include "Eight_Puzzle.h"
 
-ofstream outFile("print/display.txt");
+ofstream display("print/display.txt");
 ofstream betterPath("print/cost.txt");
+ofstream Path("print/path.txt");
 
-void vectorDisplay(vector<int> state)
+void vectorDisplay(vector<int> state, ofstream& outFile)
 {
     int vector_size = state.size();
     for (int i = 0; i < vector_size; ++i) {
@@ -171,7 +172,7 @@ int ifDuplicateHueristic(Node **node, int minHeuristic)
 
 Node *createChild(Node *parent, vector<int> goal_state, double temperature)
 {
-    vectorDisplay(parent->state_table);
+    vectorDisplay(parent->state_table, display);
     betterPath << parent->heuristic << endl;
 
     Node *children[4];
@@ -186,12 +187,12 @@ Node *createChild(Node *parent, vector<int> goal_state, double temperature)
             children[i]->parent = parent;
 
 //            cout << "Heuristic: " << children[i]->heuristic << endl;
-            outFile << "Heuristic: " << children[i]->heuristic << endl;
+            display << "Heuristic: " << children[i]->heuristic << endl;
 
             for (int j = 0; j < 4; ++j) {
                 children[i]->children[j] = NULL;
             }
-            vectorDisplay(children[i]->state_table);
+            vectorDisplay(children[i]->state_table, display);
         }
         else {
             children[i]->heuristic = 99;
@@ -271,32 +272,43 @@ double double_random()
 
 void simulated_annealing(Node *node, vector<int> goal_state)
 {
-    outFile << "Begin State" << endl; vectorDisplay(node->state_table);
-    outFile << "Goal State" << endl; vectorDisplay(goal_state);
-    outFile << "-----------------------------------" << endl << endl;
+    display << "Begin State" << endl; vectorDisplay(node->state_table, display);
+    display << "Goal State" << endl; vectorDisplay(goal_state, display);
+    display << "-----------------------------------" << endl << endl;
 
     Node *newState = node;
     if (isGoal(node, goal_state)) {
         return;
     }
 
-    double max_temperature = ((double)newState->heuristic) * 10.00;
+    double max_temperature = ((double)newState->heuristic) * 100.00;
     double temperature = max_temperature;
 
     while (temperature > 0.001) {
         int N = max_temperature - temperature;
         for (int i = 0; i < N; i++) {
             newState = createChild(newState, goal_state, temperature);
-            if (isGoal(newState, goal_state)) break;
+            if (isGoal(newState, goal_state)) {
+                break;
+            }
 //            cout << "===============================" << endl;
-            outFile << "===============================" << endl;
+            display << "===============================" << endl;
+        }
+        if (isGoal(newState, goal_state)) {
+            break;
         }
         temperature *= 0.999;
-        if (isGoal(newState, goal_state)) break;
     }
 
-    outFile << "Finish" << endl;
-    vectorDisplay(newState->state_table);
+    display << "Finish" << endl;
+    vectorDisplay(newState->state_table, display);
+
+
+    Node *backward = newState;
+    while (backward) {
+        vectorDisplay(backward->state_table, Path);
+        backward = backward->parent;
+    }
 
 }
 

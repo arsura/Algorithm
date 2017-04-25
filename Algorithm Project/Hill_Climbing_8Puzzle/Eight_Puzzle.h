@@ -21,7 +21,7 @@ struct Node
     int empty_index;
 };
 
-void vectorDisplay(vector<int> state);
+void vectorDisplay(vector<int> state, ofstream& outFile);
 void ReadFile(vector<int> &begin_state, vector<int> &goal_state);
 void createRoot(Node *root, vector<int> state, vector<int> goal);
 int misplacedHeuristic(Node *node, vector<int> goal_state);
