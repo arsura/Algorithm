@@ -2,6 +2,7 @@
 #include <vector>
 
 // 2558-Exam3_2
+// Summation Divide and Conquer
 
 using namespace std;
 

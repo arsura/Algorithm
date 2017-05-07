@@ -3,9 +3,12 @@
 #include <sstream>
 #include <string>
 #include <cstring>
+#include <algorithm>
 #include <cmath>
 
 using namespace std;
+
+// Infix Prefix Postfix
 
 // SIWAKORN RUENRIT, 04/07/2016
 // 2559-2 305233 Pre-Exam 3
@@ -37,24 +40,64 @@ using namespace std;
 //        push all element from last_index in operator_stack to postfix_stack
 //
 
+// if you want to convert infix to prefix
+// 1. reverse infix form = reverse_infix
+// 2. convert reverse_infix to postfix
+// 3. reverse postfix form
+
 void display_vector(vector<string> arr);
 bool is_operator(char op);
 int priority_of_operator(string op1, string op2);
 vector<string> infix_to_postfix(string text);
-int postfix_calculate(vector<string> postfix);
+double postfix_calculate(vector<string> postfix);
+double prefix_calculate(vector<string> prefix);
 double power(int a, int b);
+string reverse_infix(string text, int len);
+string stack_to_string(vector<string> &Stack);
 
 int main()
 {
-    string text = {"50 + 60 / 50 * 90 * 70 - 70 ^ 2"};
-    vector<string> postfix = infix_to_postfix(text);
+    string text = {"((2^5)*3)+(9*2)-(7/8)-9"};
+    string reverse_text;
+    reverse_text = reverse_infix(text, text.length());
 
-    cout << "Prefix: ";
+    // Postfix // -----------------------------------------
+    vector<string> postfix = infix_to_postfix(text);
+    cout << "Postfix: ";
     display_vector(postfix);
-    cout << "result: " << postfix_calculate(postfix);
+    cout << "Result: " << postfix_calculate(postfix);
+    cout << endl << endl;
+
+
+    // Prefix // -----------------------------------------
+    vector<string> prefix = infix_to_postfix(reverse_text);
+    reverse(prefix.begin(), prefix.end());
+    cout << "Prefix: ";
+    display_vector(prefix);
+    cout << "Result: " << prefix_calculate(prefix);
+    cout << endl << endl;
+
 }
 
-int postfix_calculate(vector<string> postfix)
+string reverse_infix(string text, int len)
+{
+    string reverse_text;
+    for (int i = len - 1; i >= 0; --i)
+    {
+        if (text[i] == '(') {
+            reverse_text += ')';
+        }
+        else if (text[i] == ')') {
+            reverse_text += '(';
+        }
+        else {
+            reverse_text += text[i];
+        }
+    }
+    return reverse_text;
+}
+
+double postfix_calculate(vector<string> postfix)
 {
     vector<double> calculate;
     int calculate_size;
@@ -78,7 +121,7 @@ int postfix_calculate(vector<string> postfix)
             calculate.pop_back();
         }
         else if (postfix[i] == "%") {
-            calculate[calculate_size - 2] = fmod(calculate[calculate_size - 1], calculate[calculate_size - 2]);
+            calculate[calculate_size - 2] = fmod(calculate[calculate_size - 2], calculate[calculate_size - 1]);
             calculate.pop_back();
         }
         else if (postfix[i] == "^") {
@@ -88,6 +131,47 @@ int postfix_calculate(vector<string> postfix)
         else {
             double value;
             istringstream(postfix[i]) >> value;
+            calculate.push_back(value);
+        }
+    }
+
+    return calculate[0];
+}
+
+double prefix_calculate(vector<string> prefix)
+{
+    vector<double> calculate;
+    int calculate_size;
+    for (int i = prefix.size() - 1; i >= 0; --i) {
+        calculate_size = calculate.size();
+
+        if (prefix[i] == "+") {
+            calculate[calculate_size - 2] = calculate[calculate_size - 1] + calculate[calculate_size - 2];
+            calculate.pop_back();
+        }
+        else if (prefix[i] == "-") {
+            calculate[calculate_size - 2] = calculate[calculate_size - 1] - calculate[calculate_size - 2];
+            calculate.pop_back();
+        }
+        else if (prefix[i] == "*") {
+            calculate[calculate_size - 2] = calculate[calculate_size - 1] * calculate[calculate_size - 2];
+            calculate.pop_back();
+        }
+        else if (prefix[i] == "/") {
+            calculate[calculate_size - 2] = calculate[calculate_size - 1] / calculate[calculate_size - 2];
+            calculate.pop_back();
+        }
+        else if (prefix[i] == "%") {
+            calculate[calculate_size - 2] = fmod(calculate[calculate_size - 1], calculate[calculate_size - 2]);
+            calculate.pop_back();
+        }
+        else if (prefix[i] == "^") {
+            calculate[calculate_size - 2] = power(calculate[calculate_size - 1], calculate[calculate_size - 2]);
+            calculate.pop_back();
+        }
+        else {
+            double value;
+            istringstream(prefix[i]) >> value;
             calculate.push_back(value);
         }
     }
@@ -206,7 +290,6 @@ int priority_of_operator(string op1, string op2)
             return -1;
         }
     }
-
 }
 
 bool is_operator(char op)
