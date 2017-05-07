@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// Convex Hull Monotone Chain
+
 struct Point
 {
     int x;
