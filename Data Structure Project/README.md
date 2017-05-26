@@ -32,7 +32,6 @@ Data Structure Project
 **แต่ทั้งนี้ไม่ว่าจะวิธีไหนก็จะใช้พื้นที่เพิ่มเป็น 2 เท่า**
 
 **Test File (Catch Test Framework) : TrieTest.cpp** <br/>
- [Download Data Structure Project Trie](https://minhaskamal.github.io/DownGit/#/homeurl=https://github.com/arsura/Algorithm/tree/master/Data%20Structure%20Project/Trie)
 --------------------------------------------------------------
 
 **อ้างอิง** <br/>
@@ -45,6 +44,8 @@ Data Structure Project
 - [Trie (Prefix Tree)](https://www.cs.usfca.edu/~galles/visualization/Trie.html) จำเป็นและสำคัญมากในการ implement <br/>
 
 --------------------------------------------------------------
+
+ [Download Data Structure Project Trie](blob:https://minhaskamal.github.io/0f05a31c-1c36-4b8a-b262-07326105d4d6)
 
 
 
