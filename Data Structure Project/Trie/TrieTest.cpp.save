@@ -1,0 +1,229 @@
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+#include "catch.hpp"
+
+#include "TrieHeader.h"
+#include "BasicProperties.cpp"
+#include "AutoComplete.cpp"
+#include "SearchAllWord.cpp"
+
+
+TEST_CASE( "have CAT in Trie", "[Insert]" ) {
+
+//  Insert Test 1
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "CAT");
+
+//         root
+//         /
+//        C
+//       /
+//      A
+//     /
+//    T
+//
+//  C = 67
+//  A = 65
+//  T = 84
+
+    TrieNode *node = trie->root;
+    bool have = node->children[67]->children[65]->children[84];
+
+    REQUIRE( have == true );
+}
+
+TEST_CASE( "have CALL in Trie", "[Insert]" ) {
+
+//  Insert Test 2
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "CAT");
+    Insert(trie, "CALL");
+
+//         root
+//         /
+//        C
+//       /
+//      A
+//     / \
+//    T   L
+//         \
+//          L
+//
+//  C = 67
+//  A = 65
+//  L = 76
+//  L = 76
+
+    TrieNode *node = trie->root;
+    bool have = node->children[67]->children[65]->children[76]->children[76];
+
+    REQUIRE( have == true );
+}
+
+TEST_CASE( "have CALF in Trie", "[Insert]" ) {
+
+//  Insert Test 3
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "CAT");
+    Insert(trie, "CALL");
+    Insert(trie, "CALF");
+
+//         root
+//         /
+//        C
+//       /
+//      A
+//     / \
+//    T   L
+//       / \
+//      F   L
+//
+//  C = 67
+//  A = 65
+//  L = 76
+//  F = 70
+
+    TrieNode *node = trie->root;
+    bool have = node->children[67]->children[65]->children[76]->children[70];
+
+    REQUIRE( have == true );
+}
+
+TEST_CASE( "don't have CAT in Trie", "[Delete]" ) {
+
+//  Delete Test 1
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "CAT");
+    Insert(trie, "CALL");
+    Insert(trie, "CALF");
+
+//         root
+//         /
+//        C
+//       /
+//      A
+//     / \
+//    T   L
+//       / \
+//      F   L
+//
+//  C = 67
+//  A = 65
+//  T = 84
+
+    // Delete CAT --------
+    Delete(trie, "CAT");
+    // -------------------
+
+    TrieNode *node = trie->root;
+    bool have = node->children[67]->children[65]->children[84];
+
+    REQUIRE( have == false );
+}
+
+TEST_CASE( "don't have CALL in Trie", "[Delete]" ) {
+
+//  Delete Test 2
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "CAT");
+    Insert(trie, "CALL");
+    Insert(trie, "CALF");
+
+//         root
+//         /
+//        C
+//       /
+//      A
+//     / \
+//    T   L
+//       / \
+//      F   L
+//
+//  C = 67
+//  A = 65
+//  L = 76
+//  L = 76
+
+    // Delete CALL -------
+    Delete(trie, "CALL");
+    // -------------------
+
+    TrieNode *node = trie->root;
+    bool have = node->children[67]->children[65]->children[76]->children[76];
+
+    REQUIRE( have == false );
+}
+
+TEST_CASE( "have SIWAKORN in Trie", "[haveWord]" ) {
+
+//  haveWord function Test 1
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "SIWAKORN");
+
+    REQUIRE( haveWord(trie, "SIWAKORN") == true );
+}
+
+TEST_CASE( "don't have SIWAKORN in Trie", "[haveWord]" ) {
+
+//  haveWord function Test 2
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "SIWAKOR");
+
+    REQUIRE( haveWord(trie, "SIWAKORN") == false );
+}
+
+TEST_CASE( "don't have ABSOLUTE in Trie", "[haveWord]" ) {
+
+//  haveWord function Test 3
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "ABSOLUTE");
+    Delete(trie, "ABSOLUTE");
+
+    REQUIRE( haveWord(trie, "ABSOLUTE") == false );
+}
+
+TEST_CASE( "don't have any word in Trie", "[Destroy]" ) {
+
+//  Destroy Test 1
+
+    Trie *trie = new Trie;
+    Initialize(trie);
+    Insert(trie, "CAT");
+    Insert(trie, "CALL");
+    Insert(trie, "CALF");
+
+//         root
+//         /
+//        C
+//       /
+//      A
+//     / \
+//    T   L
+//       / \
+//      F   L
+//
+
+    // Destroy -----------
+    Destroyed(trie);
+    // -------------------
+
+    TrieNode *node = trie->root;
+    if (haveWord(trie, "CAT");
+
+    REQUIRE( have == true );
+}
