@@ -247,7 +247,7 @@ bool isGoal(Node *node, vector<int> goal_state)
     return true;
 }
 
-void hillClimbing(Node *node, vector<int> goal_state)
+Node *hillClimbing(Node *node, vector<int> goal_state)
 {
     display << "Begin State" << endl; vectorDisplay(node->state_table, display);
     display << "Goal State" << endl; vectorDisplay(goal_state, display);
@@ -255,7 +255,7 @@ void hillClimbing(Node *node, vector<int> goal_state)
 
     Node *currentNode = new Node;
     if (isGoal(node, goal_state)) {
-        return;
+        return node;
     }
     currentNode = createChild(node, goal_state);
 
@@ -273,5 +273,6 @@ void hillClimbing(Node *node, vector<int> goal_state)
         backward = backward->parent;
     }
 
+    return currentNode;
 }
 

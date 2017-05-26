@@ -172,7 +172,7 @@ int ifDuplicateHueristic(Node **node, int minHeuristic)
 
 Node *createChild(Node *parent, vector<int> goal_state, double temperature)
 {
-    vectorDisplay(parent->state_table);
+    vectorDisplay(parent->state_table, display);
     betterPath << parent->heuristic << endl;
 
     Node *children[4];
@@ -187,12 +187,12 @@ Node *createChild(Node *parent, vector<int> goal_state, double temperature)
             children[i]->parent = parent;
 
 //            cout << "Heuristic: " << children[i]->heuristic << endl;
-            outFile << "Heuristic: " << children[i]->heuristic << endl;
+            display << "Heuristic: " << children[i]->heuristic << endl;
 
             for (int j = 0; j < 4; ++j) {
                 children[i]->children[j] = NULL;
             }
-            vectorDisplay(children[i]->state_table);
+            vectorDisplay(children[i]->state_table, display);
         }
         else {
             children[i]->heuristic = 99;
@@ -270,11 +270,11 @@ double double_random()
   return (double)rand() / ((double)RAND_MAX + 1);
 }
 
-void simulated_annealing(Node *node, vector<int> goal_state)
+Node *simulated_annealing(Node *node, vector<int> goal_state)
 {
-    outFile << "Begin State" << endl; vectorDisplay(node->state_table);
-    outFile << "Goal State" << endl; vectorDisplay(goal_state);
-    outFile << "-----------------------------------" << endl << endl;
+    display << "Begin State" << endl; vectorDisplay(node->state_table, display);
+    display << "Goal State" << endl; vectorDisplay(goal_state, display);
+    display << "-----------------------------------" << endl << endl;
 
     Node *newState = node;
     if (isGoal(node, goal_state)) {
@@ -292,7 +292,7 @@ void simulated_annealing(Node *node, vector<int> goal_state)
                 break;
             }
 //            cout << "===============================" << endl;
-            outFile << "===============================" << endl;
+            display << "===============================" << endl;
         }
         if (isGoal(newState, goal_state)) {
             break;
@@ -301,7 +301,16 @@ void simulated_annealing(Node *node, vector<int> goal_state)
     }
 
     display << "Finish" << endl;
-    vectorDisplay(newState->state_table);
+    vectorDisplay(newState->state_table, display);
+
+
+    Node *backward = newState;
+    while (backward) {
+        vectorDisplay(backward->state_table, Path);
+        backward = backward->parent;
+    }
+    
+    
 
 }
 

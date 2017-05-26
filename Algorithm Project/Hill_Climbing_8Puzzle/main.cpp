@@ -11,7 +11,7 @@ int main()
     createRoot(state, begin_state, goal_state);
 
 //    start = clock();
-    hillClimbing(state, goal_state);
+    state = hillClimbing(state, goal_state);
 //    duration = clock() - start;
 
 //    cout << duration / (double) CLOCKS_PER_SEC << endl;

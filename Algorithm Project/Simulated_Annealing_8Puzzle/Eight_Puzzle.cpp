@@ -203,7 +203,7 @@ Node *createChild(Node *parent, vector<int> goal_state, double temperature)
 
     // best child
     for (int i = 0; i < 4; i++) {
-        if (children[i]->heuristic == 1) {
+        if (children[i]->heuristic <= 2) {
             return children[i];
         }
     }
@@ -227,17 +227,6 @@ Node *createChild(Node *parent, vector<int> goal_state, double temperature)
             minHeuristic = children[i]->heuristic;
             currentNode = children[i];
         }
-    }
-
-    int duplicate = 0;
-    for (int i = 0; i < 4; i++) {
-        if (children[i]->heuristic == minHeuristic) {
-            ++duplicate;
-        }
-    }
-
-    if (duplicate > 1) {
-        currentNode = children[ifDuplicateHueristic(children, minHeuristic)];
     }
 
     return currentNode;
@@ -270,7 +259,7 @@ double double_random()
   return (double)rand() / ((double)RAND_MAX + 1);
 }
 
-void simulated_annealing(Node *node, vector<int> goal_state)
+Node *simulated_annealing(Node *node, vector<int> goal_state)
 {
     display << "Begin State" << endl; vectorDisplay(node->state_table, display);
     display << "Goal State" << endl; vectorDisplay(goal_state, display);
@@ -278,10 +267,10 @@ void simulated_annealing(Node *node, vector<int> goal_state)
 
     Node *newState = node;
     if (isGoal(node, goal_state)) {
-        return;
+        return node;
     }
 
-    double max_temperature = ((double)newState->heuristic) * 100.00;
+    double max_temperature = ((double)newState->heuristic) * 10.00;
     double temperature = max_temperature;
 
     while (temperature > 0.001) {
@@ -309,6 +298,8 @@ void simulated_annealing(Node *node, vector<int> goal_state)
         vectorDisplay(backward->state_table, Path);
         backward = backward->parent;
     }
+
+    return newState;
 
 }
 
