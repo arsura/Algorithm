@@ -76,5 +76,7 @@ Algorithm Project <br/>
 - [15-Puzzle](https://en.wikipedia.org/wiki/15_puzzle) <br/>
 
 --------------------------------------------------------------
-  
+
+[Download Algorithm Project Hill Climbing](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arsura/Algorithm/tree/master/Algorithm%20Project/Hill_Climbing_8Puzzle)
+[Download Algorithm Project Simulated Annealing](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arsura/Algorithm/tree/master/Algorithm%20Project/Simulated_Annealing_8Puzzle)
   
