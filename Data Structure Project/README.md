@@ -46,7 +46,7 @@ Data Structure Project
 
 --------------------------------------------------------------
 
- [Download Data Structure Project Trie](blob:https://minhaskamal.github.io/0f05a31c-1c36-4b8a-b262-07326105d4d6)
+ [Download Data Structure Project Trie](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arsura/Algorithm/tree/master/Data%20Structure%20Project/Trie)
 
 
 
